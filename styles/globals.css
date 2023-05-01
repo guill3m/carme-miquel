@@ -1,0 +1,219 @@
+:root {
+  --color-background: rgb(255, 255, 255);
+  --color-background-dark: rgb(248, 248, 248);
+  --color-background-dark-h: rgb(240, 240, 240);
+  --color-highlight: rgb(65, 65, 65);
+  --color-text: rgb(65, 65, 65);
+  --color-text-light: rgb(180, 180, 180);
+  --cubic-bezier-ease-in: cubic-bezier(.3, 0, 1, 1);
+  --cubic-bezier-ease-out: cubic-bezier(0, 0, .7, 1);
+  --max-width: 1440px;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: calc(.75em + .5vw);
+  font-weight: 400;
+  margin: 0;
+  padding: 20px;
+}
+
+@media (min-width: 800px) {
+  body {
+    font-size: 1em;
+  }
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.75rem;
+  line-height: 1;
+}
+
+@media (min-width: 600px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 670px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 760px) {
+  h1 {
+    font-size: 2.25rem;
+  }
+}
+
+@media (min-width: 850px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 915px) {
+  h1 {
+    font-size: 2.75rem;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 a {
+  color: var(--color-text);
+}
+
+@media (min-width: 600px) {
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 670px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 760px) {
+  h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 850px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  color: var(--color-text-light);
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+h3 a {
+  color: var(--color-text-light);
+}
+
+@media (min-width: 600px) {
+  h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 670px) {
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 850px) {
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+h1,
+a,
+.color {
+  color: var(--color-highlight);
+}
+
+a {
+  text-decoration: none;
+  transition: color 256ms var(--cubic-bezier-ease-out);
+}
+
+a:hover,
+a:focus {
+  color: #000;
+  transition-timing-function: var(--cubic-bezier-ease-in);
+}
+
+a:focus {
+  outline: thin dotted;
+}
+
+p {
+  line-height: 1.4;
+  font-size: 1rem;
+}
+
+small {
+  font-size: .8rem;
+}
+
+blockquote,
+q {
+  quotes: "«" "»" "“" "”" "‘" "’";
+}
+
+blockquote::before,
+q::before {
+  content: open-quote;
+}
+
+blockquote::after,
+q::after {
+  content: close-quote;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+hr {
+  background-color: var(--color-text-light);
+  border: 0;
+  border-radius: 3px;
+  height: 3px;
+  margin: 20px 10%;
+  padding: 0;
+  width: 80%;
+}
+
+hr {
+  background-color: var(--color-highlight);
+}
+
+::selection {
+  background-color: var(--color-highlight);
+  color: var(--color-background);
+  text-shadow: none;
+}
