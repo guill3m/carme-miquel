@@ -11,9 +11,7 @@ import IconSprite from '@/components/IconSprite'
 import Icon from '@/components/Icon'
 
 export const metadata = {
-  authors: [
-    { url: 'https://www.carmemiquel.com/humans.txt' },
-  ],
+  authors: [{ url: 'https://www.carmemiquel.com/humans.txt' }],
   other: {
     'format-detection': 'telephone=no', // Prevent iOS from formatting a book ISBN as a phone number
   },
@@ -24,24 +22,20 @@ export const metadata = {
   },
 }
 
-export default function RootLayout ({
-  children,
-}: {
-  children: ReactNode
-}) {
-  const year = (new Date()).getFullYear()
+export default function RootLayout({ children }: { children: ReactNode }) {
+  const year = new Date().getFullYear()
 
   return (
     <html
       className={[fontArvo.variable, fontOpenSans.variable].join(' ')}
-      lang='ca'
+      lang="ca"
     >
       <body>
         <header className={styles.header}>
           <nav>
-            <Link href='/'>
+            <Link href="/">
               <Image
-                alt='Carme Miquel'
+                alt="Carme Miquel"
                 height={80}
                 priority
                 src={headerImg}
@@ -50,47 +44,54 @@ export default function RootLayout ({
             </Link>
             <ul className={styles.menu}>
               <li className={[colors.autora].join(' ')}>
-                <Link href='/autora'>
-                  <Icon name='autora' />
+                <Link href="/autora">
+                  <Icon name="autora" />
                   <span>Autora</span>
                 </Link>
               </li>
               <li className={colors.entrevistes}>
-                <Link href='/entrevistes'>
-                  <Icon name='entrevistes' />
+                <Link href="/entrevistes">
+                  <Icon name="entrevistes" />
                   <span>Entrevistes</span>
                 </Link>
               </li>
               <li className={colors.llibres}>
-                <Link href='/llibres'>
-                  <Icon name='llibres' />
+                <Link href="/llibres">
+                  <Icon name="llibres" />
                   <span>Llibres</span>
                 </Link>
               </li>
               <li className={colors.articles}>
-                <Link href='/articles'>
-                  <Icon name='articles' />
+                <Link href="/articles">
+                  <Icon name="articles" />
                   <span>Articles</span>
                 </Link>
               </li>
               <li className={colors.videos}>
-                <Link href='/videos'>
-                  <Icon name='videos' />
+                <Link href="/videos">
+                  <Icon name="videos" />
                   <span>Vídeos</span>
                 </Link>
               </li>
             </ul>
           </nav>
         </header>
-        <main className={styles.main}>
-          {children}
-        </main>
+        <main className={styles.main}>{children}</main>
         <footer className={styles.footer}>
           <p>
-            <small>© Carme Miquel, 2009&ndash;{year}. <Link href='/politica-de-privadesa'>Política de privadesa</Link>.</small>
+            <small>
+              © Carme Miquel, 2009&ndash;{year}.{' '}
+              <Link href="/politica-de-privadesa">Política de privadesa</Link>.
+            </small>
           </p>
           <p>
-            <small>Disseny Web: <a href='https://www.guillemandreu.com' target='_blank'>Guillem Andreu</a>.</small>
+            <small>
+              Disseny Web:{' '}
+              <a href="https://www.guillemandreu.com" target="_blank">
+                Guillem Andreu
+              </a>
+              .
+            </small>
           </p>
         </footer>
         <IconSprite />
