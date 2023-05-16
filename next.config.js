@@ -4,7 +4,6 @@ const nextConfig = {
     dirs: ['.'],
   },
   experimental: {
-    appDir: true,
     typedRoutes: true,
   },
   productionBrowserSourceMaps: true,
