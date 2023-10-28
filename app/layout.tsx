@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import { Metadata, Viewport } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,16 +11,17 @@ import colors from '@/styles/colors.module.css'
 import IconSprite from '@/components/IconSprite'
 import Icon from '@/components/Icon'
 
-export const metadata = {
+export const metadata: Metadata = {
   authors: [{ url: 'https://www.carmemiquel.com/humans.txt' }],
   other: {
     'format-detection': 'telephone=no', // Prevent iOS from formatting a book ISBN as a phone number
   },
-  viewport: {
-    initialScale: 1,
-    viewportFit: 'cover',
-    width: 'device-width',
-  },
+}
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  viewportFit: 'cover',
+  width: 'device-width',
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {
