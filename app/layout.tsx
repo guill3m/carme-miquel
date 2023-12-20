@@ -8,8 +8,8 @@ import { fontArvo, fontOpenSans } from '@/styles/fonts'
 import '@/styles/globals.css'
 import styles from './layout.module.css'
 import colors from '@/styles/colors.module.css'
-import IconSprite from '@/components/IconSprite'
-import Icon from '@/components/Icon'
+import IconSprite from '@/components/icon-sprite'
+import Icon from '@/components/icon'
 
 export const metadata: Metadata = {
   authors: [{ url: 'https://www.carmemiquel.com/humans.txt' }],
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               />
             </Link>
             <ul className={styles.menu}>
-              <li className={[colors.autora].join(' ')}>
+              <li className={colors.autora}>
                 <Link href="/autora">
                   <Icon name="autora" />
                   <span>Autora</span>
