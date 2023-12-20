@@ -7,7 +7,6 @@
   Design & Development:
     Guillem Andreu
       Site: http://guillemandreu.com
-      Contact: contact [at] guillemandreu.com
       Twitter: @guill3m
       Location: Berlin, Germany
 
