@@ -6,7 +6,8 @@ const securityHeaders = [
     headers: [
       {
         key: 'Permissions-Policy',
-        value: 'camera=(), geolocation=(), microphone=()',
+        value:
+          'camera=(),display-capture=(),geolocation=(),microphone=(),usb=()',
       },
       {
         key: 'Referrer-Policy',
@@ -40,7 +41,6 @@ const nextConfig = {
     return [...securityHeaders]
   },
   productionBrowserSourceMaps: true,
-  reactStrictMode: true,
 }
 
 module.exports = nextConfig
