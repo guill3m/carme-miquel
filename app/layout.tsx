@@ -24,7 +24,9 @@ export const viewport: Viewport = {
   width: 'device-width',
 }
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   const year = new Date().getFullYear()
 
   return (

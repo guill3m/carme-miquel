@@ -1,4 +1,4 @@
-import { Arvo, Open_Sans } from 'next/font/google' // eslint-disable-line camelcase
+import { Arvo, Open_Sans } from 'next/font/google'
 
 export const fontArvo = Arvo({
   display: 'swap',
