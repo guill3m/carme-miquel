@@ -1,0 +1,9 @@
+.alternate {
+  font-family: var(--font-serif);
+}
+
+.alternate h2 {
+  color: var(--color-highlight);
+  font-size: 1.2rem;
+  margin-top: 2em;
+}
