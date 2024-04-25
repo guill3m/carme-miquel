@@ -1,15 +1,19 @@
 import { ReactNode } from 'react'
 import { Metadata, Viewport } from 'next'
+import clsx from 'clsx'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import headerImg from '@/img/carme-miquel.png'
-import { fontArvo, fontOpenSans } from '@/styles/fonts'
-import '@/styles/globals.css'
-import styles from './layout.module.css'
-import colors from '@/styles/colors.module.css'
 import IconSprite from '@/components/icon-sprite'
 import Icon from '@/components/icon'
+
+import headerImg from '@/img/carme-miquel.png'
+
+import { fontArvo, fontOpenSans } from '@/styles/fonts'
+import '@/styles/globals.css'
+import colors from '@/styles/colors.module.css'
+import styles from './layout.module.css'
+
 
 export const metadata: Metadata = {
   authors: [{ url: 'https://www.carmemiquel.com/humans.txt' }],
@@ -31,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html
-      className={[fontArvo.variable, fontOpenSans.variable].join(' ')}
+      className={clsx([fontArvo.variable, fontOpenSans.variable])}
       lang="ca"
     >
       <body>
@@ -85,7 +89,7 @@ export default function RootLayout({
           <p>
             <small>
               © Carme Miquel, 2009&ndash;{year}.{' '}
-              <Link href="/politica-de-privadesa">Política de privadesa</Link>.
+              <Link href="/politica-de-privadesa">Política de privadesa</Link>
             </small>
           </p>
           <p>
@@ -94,7 +98,6 @@ export default function RootLayout({
               <a href="https://www.guillemandreu.com" target="_blank">
                 Guillem Andreu
               </a>
-              .
             </small>
           </p>
         </footer>

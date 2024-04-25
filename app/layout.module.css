@@ -71,6 +71,12 @@
   line-height: 35px;
 }
 
+.footer {
+  color: var(--color-text-light);
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+}
+
 @media (width >= 500px) {
   .menu {
     display: grid;
@@ -116,6 +122,26 @@
   .menu span {
     display: block;
   }
+
+  .footer {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  .footer p:first-child {
+    grid-column: 2 / span 1;
+  }
+
+  .footer p:last-child {
+    grid-column: 3 / span 1;
+    text-align: right;
+  }
 }
 
 @media (width >= 600px) {
@@ -126,14 +152,6 @@
   .menu svg {
     height: 60px;
     width: 60px;
-  }
-
-  .footer {
-    display: flex;
-  }
-
-  .footer p:first-child {
-    margin-right: auto;
   }
 }
 

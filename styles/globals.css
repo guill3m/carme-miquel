@@ -4,7 +4,7 @@
   --color-background-dark-h: rgb(240 240 240);
   --color-highlight: rgb(65 65 65);
   --color-text: rgb(65 65 65);
-  --color-text-light: rgb(180 180 180);
+  --color-text-light: rgb(160 160 160);
   --cubic-bezier-ease-in: cubic-bezier(0.3, 0, 1, 1);
   --cubic-bezier-ease-out: cubic-bezier(0, 0, 0.7, 1);
   --max-width: 1440px;
