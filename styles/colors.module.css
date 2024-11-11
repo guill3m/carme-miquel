@@ -1,19 +1,19 @@
 .autora {
-  --color-highlight: rgb(140 195 75);
+	--color-highlight: rgb(140 195 75);
 }
 
 .entrevistes {
-  --color-highlight: rgb(75 135 195);
+	--color-highlight: rgb(75 135 195);
 }
 
 .llibres {
-  --color-highlight: rgb(235 175 45);
+	--color-highlight: rgb(235 175 45);
 }
 
 .articles {
-  --color-highlight: rgb(195 75 130);
+	--color-highlight: rgb(195 75 130);
 }
 
 .videos {
-  --color-highlight: rgb(75 185 195);
+	--color-highlight: rgb(75 185 195);
 }
