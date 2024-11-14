@@ -1,0 +1,54 @@
+---
+import '../styles/font-face.scss'
+import '../styles/globals.scss'
+import styles from './layout.module.scss'
+
+import SiteHeader from '../components/site-header.astro'
+import SiteFooter from '../components/site-footer.astro'
+import IconSprite from '../components/icon-sprite.astro'
+
+interface Props {
+	color: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
+	title: string
+	meta_title?: string
+	meta_description?: string
+}
+
+const { color, title, meta_title, meta_description } = Astro.props
+const slots = Astro.slots
+---
+
+<!doctype html>
+<html lang="ca">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1,viewport-fit=cover"
+		/>
+		<title>{meta_title ? meta_title : `${title} - Carme Miquel`}</title>
+		{meta_description && <meta name="description" content={meta_description} />}
+		{/* Prevent iOS from formatting a book ISBN as a phone number */}
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="author" href={`${Astro.site}/humans.txt`} />
+	</head>
+	<body class={color}>
+		<SiteHeader />
+		<main class={styles.main}>
+			<h1 class={styles.title}>{title}</h1>
+			<div class={styles.content}>
+				<slot>Hello world!</slot>
+			</div>
+			{
+				slots.has('aside') && (
+					<div class={styles.aside}>
+						<slot name="aside" />
+					</div>
+				)
+			}
+		</main>
+		<SiteFooter />
+		<IconSprite />
+	</body>
+</html>

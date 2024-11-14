@@ -1,18 +1,24 @@
-# Logs
+# logs
 logs
 *.log
 npm-debug.log*
 
-# Dependency directories
+# dependencies
 node_modules/
 
-# dotenv environment variable files
-.env
-.env.development.local
-.env.test.local
-.env.production.local
-.env.local
+# build output
+dist/
 
-# Next.js build output
-.next
-out
+# generated types
+.astro/
+
+# environment variables
+.env
+.env.local
+.env.test
+.env.production
+
+# vscode settings
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json

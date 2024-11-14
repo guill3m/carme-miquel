@@ -1,0 +1,54 @@
+---
+import { Picture } from 'astro:assets'
+
+import styles from './site-header.module.scss'
+
+import Icon from './icon.astro'
+
+import headerImage from '../assets/carme-miquel.png'
+---
+
+<header class={styles.header}>
+	<nav>
+		<a href="/">
+			<Picture
+				alt="Carme Miquel"
+				formats={['avif', 'webp']}
+				src={headerImage}
+				widths={[260, 320, 380, 410, 450, 600, 680, 750, 800, headerImage.width]}
+			/>
+		</a>
+		<ul class={styles.menu}>
+			<li class="autora">
+				<a href="/autora">
+					<Icon name="autora" />
+					<span>Autora</span>
+				</a>
+			</li>
+			<li class="entrevistes">
+				<a href="/entrevistes">
+					<Icon name="entrevistes" />
+					<span>Entrevistes</span>
+				</a>
+			</li>
+			<li class="llibres">
+				<a href="/llibres">
+					<Icon name="llibres" />
+					<span>Llibres</span>
+				</a>
+			</li>
+			<li class="articles">
+				<a href="/articles">
+					<Icon name="articles" />
+					<span>Articles</span>
+				</a>
+			</li>
+			<li class="videos">
+				<a href="/videos">
+					<Icon name="videos" />
+					<span>Vídeos</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+</header>

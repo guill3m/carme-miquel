@@ -1,0 +1,11 @@
+---
+interface Props {
+	name: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
+}
+
+const { name } = Astro.props
+---
+
+<svg viewBox="0 0 600 600">
+	<use xlink:href={`#icon-${name}`}></use>
+</svg>

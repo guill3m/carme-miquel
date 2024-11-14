@@ -7,11 +7,34 @@
 	--color-text-light: rgb(160 160 160);
 	--cubic-bezier-ease-in: cubic-bezier(0.3, 0, 1, 1);
 	--cubic-bezier-ease-out: cubic-bezier(0, 0, 0.7, 1);
+	--font-stack-sans: 'Open Sans', 'Open Sans Fallback', sans-serif;
+	--font-stack-serif: 'Arvo', 'Arvo Fallback', serif;
 	--max-width: 1440px;
+}
+
+.autora {
+	--color-highlight: rgb(140 195 75);
+}
+
+.entrevistes {
+	--color-highlight: rgb(75 135 195);
+}
+
+.llibres {
+	--color-highlight: rgb(235 175 45);
+}
+
+.articles {
+	--color-highlight: rgb(195 75 130);
+}
+
+.videos {
+	--color-highlight: rgb(75 185 195);
 }
 
 html {
 	box-sizing: border-box;
+	font-size: calc(0.75em + 0.5vw);
 	scroll-behavior: smooth;
 	text-size-adjust: none;
 }
@@ -25,17 +48,10 @@ html {
 body {
 	background: var(--color-background);
 	color: var(--color-text);
-	font-family: var(--font-sans);
-	font-size: calc(0.75em + 0.5vw);
+	font-family: var(--font-stack-sans);
 	font-weight: 400;
 	margin: 0;
-	padding: 20px;
-}
-
-@media (width >= 800px) {
-	body {
-		font-size: 1em;
-	}
+	padding: 1.5rem;
 }
 
 h1,
@@ -47,12 +63,13 @@ h3 {
 
 h1,
 h3 {
-	font-family: var(--font-serif);
+	font-family: var(--font-stack-serif);
 	font-weight: 700;
 }
 
 h1 {
 	font-size: 2.75rem;
+	font-weight: 700;
 	line-height: 1;
 }
 
@@ -74,7 +91,6 @@ a,
 }
 
 a {
-	text-decoration: none;
 	transition: color 256ms var(--cubic-bezier-ease-out);
 }
 
@@ -99,6 +115,7 @@ a:focus {
 p {
 	line-height: 1.4;
 	font-size: 1rem;
+	margin: 0;
 }
 
 small {
@@ -129,9 +146,9 @@ dfn[title] {
 hr {
 	background-color: var(--color-highlight);
 	border: 0;
-	border-radius: 3px;
-	height: 3px;
-	margin: 20px 10%;
+	border-radius: 0.25rem;
+	height: 0.25rem;
+	margin: 1.5rem 10%;
 	padding: 0;
 	width: 80%;
 }
@@ -143,20 +160,6 @@ hr {
 }
 
 @media (width >= 600px) {
-	h1 {
-		font-size: 1.75rem;
-	}
-
-	h2 {
-		font-size: 1.25rem;
-	}
-
-	h3 {
-		font-size: 1rem;
-	}
-}
-
-@media (width >= 670px) {
 	h1 {
 		font-size: 2rem;
 	}
@@ -194,8 +197,14 @@ hr {
 	}
 }
 
-@media (width >= 915px) {
+@media (width >= 940px) {
 	h1 {
 		font-size: 2.75rem;
+	}
+}
+
+@media (width >= 1000px) {
+	html {
+		font-size: 1.0625em;
 	}
 }

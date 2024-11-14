@@ -6,13 +6,12 @@
 
   Design & Development:
     Guillem Andreu
-      Site: http://guillemandreu.com
-      Twitter: @guill3m
+      Site: https://www.guillemandreu.com
       Location: Berlin, Germany
 
   Content:
     Carme Miquel
-      Site: http://carmemiquel.com
+      Site: https://www.carmemiquel.com
       Location: València, Spain
 
 

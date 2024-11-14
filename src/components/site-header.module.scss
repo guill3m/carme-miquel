@@ -1,0 +1,133 @@
+.header {
+	margin-bottom: 3rem;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: var(--max-width);
+	text-align: center;
+	width: 100%;
+
+	img {
+		display: inline-block;
+		height: auto;
+		margin: 1rem;
+		max-width: 22rem;
+		vertical-align: bottom;
+		width: calc(100% - 2rem);
+	}
+}
+
+.menu {
+	text-align: left;
+	list-style: none;
+	padding: 0;
+
+	li {
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 2;
+		margin: 0.5em 0;
+		text-transform: uppercase;
+
+		&:nth-child(1) {
+			margin-top: 0;
+		}
+	}
+
+	a {
+		background-color: var(--color-highlight);
+		border-radius: 1em;
+		color: var(--color-background);
+		display: block;
+		padding: 0 1em;
+		text-decoration: none;
+		transition: background-color 256ms var(--cubic-bezier-ease-out);
+
+		&:hover,
+		&:focus {
+			transition-timing-function: var(--cubic-bezier-ease-in);
+		}
+	}
+
+	a:hover,
+	a:focus {
+		background-color: var(--color-text);
+	}
+
+	svg {
+		fill: var(--color-background);
+		margin-right: 0.5em;
+		height: 2.5em;
+		vertical-align: bottom;
+		width: 2.5em;
+	}
+
+	span {
+		line-height: 2.5;
+	}
+}
+
+@media (width >= 500px) {
+	.menu {
+		display: grid;
+		grid-gap: 1.5rem;
+		grid-template-columns: repeat(5, 1fr);
+
+		li {
+			font-size: 0.85rem;
+			margin: 0;
+		}
+
+		a {
+			background: none;
+			color: var(--color-highlight);
+			text-align: center;
+			padding: 0;
+			transition: color 256ms var(--cubic-bezier-ease-out);
+
+			&:hover,
+			&:focus {
+				background: none;
+				color: var(--color-text);
+				transition-timing-function: var(--cubic-bezier-ease-in);
+			}
+		}
+
+		svg {
+			background-color: var(--color-highlight);
+			border-radius: 50%;
+			height: 4em;
+			margin: 0;
+			padding: 0.25em;
+			transition: background-color 256ms var(--cubic-bezier-ease-out);
+			width: 4em;
+		}
+
+		a:hover,
+		a:focus {
+			svg {
+				background: var(--color-text);
+				transition-timing-function: var(--cubic-bezier-ease-in);
+			}
+		}
+
+		span {
+			display: block;
+		}
+	}
+}
+
+@media (width >= 600px) {
+	.menu {
+		li {
+			font-size: 1rem;
+		}
+	}
+}
+
+@media (width >= 700px) {
+	.menu {
+		li {
+			font-size: 1.1rem;
+		}
+	}
+}
