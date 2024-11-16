@@ -1,7 +1,8 @@
 ---
 layout: '../layouts/autora.astro'
 title: 'L’autora'
-meta_description: 'Carme Miquel i Diego naix a La Nucia (Marina Baixa), si bé la major part de la seua vida ha transcorregut a la ciutat de València i en pobles de la Marina Alta i de l’Horta Sud. Filla de mestres d’escola, Carme ha exercit també aquesta professió durant vora trenta-nou anys.'
+meta:
+  description: 'Carme Miquel i Diego naix a La Nucia (Marina Baixa), si bé la major part de la seua vida ha transcorregut a la ciutat de València i en pobles de la Marina Alta i de l’Horta Sud. Filla de mestres d’escola, Carme ha exercit també aquesta professió durant vora trenta-nou anys.'
 ---
 
 Carme Miquel i Diego naix a La Nucia (Marina Baixa), si bé la major part de la seua vida ha transcorregut a la ciutat de València i en pobles de la Marina Alta i de l’Horta Sud. Filla de mestres d’escola, Carme ha exercit també aquesta professió durant vora trenta-nou anys. Al llarg de la seua trajectòria ha participat en diversos moviments professionals i sindicals. Ha sigut membre fundador de la CAPPEPV (Coordinadora d’Alumnes, Pares i Professors per l’Ensenyament Públic en Valencià) i de la Federació Escola Valenciana ocupant la presidència d’ambdues entitats durant tres anys.

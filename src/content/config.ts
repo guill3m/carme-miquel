@@ -1,12 +1,18 @@
 import { defineCollection, reference, z } from 'astro:content'
 import { glob, file } from 'astro/loaders'
 
+const meta = z.object({
+	title: z.string().optional(),
+	description: z.string().optional(),
+})
+
 const article = defineCollection({
 	loader: glob({
 		base: 'src/content/articles',
 		pattern: '.md',
 	}),
 	schema: z.object({
+		meta,
 		title: z.string(),
 		date: z.string().date(),
 		publisher: z.string().optional(),
@@ -29,6 +35,7 @@ const book = defineCollection({
 		pattern: ['*.md', '!*.documents.md'],
 	}),
 	schema: z.object({
+		meta,
 		title: z.string(),
 		publisher: z.string(),
 		year: z.number().min(1900).max(2024),
@@ -65,6 +72,7 @@ const bookDocuments = defineCollection({
 	}),
 	schema: z.object({
 		book: reference('book'),
+		meta,
 		title: z.string(),
 	}),
 })
@@ -75,6 +83,7 @@ const interview = defineCollection({
 		pattern: 'base.md',
 	}),
 	schema: z.object({
+		meta,
 		title: z.string(),
 		date: z.string().date(),
 		interviewer: z.string(),
@@ -97,6 +106,7 @@ const video = defineCollection({
 		pattern: '*.md',
 	}),
 	schema: z.object({
+		meta,
 		title: z.string(),
 		platform: z.string().regex(/vimeo|youtube|youtube-list/),
 		videoId: z.string(),

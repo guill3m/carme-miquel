@@ -6,16 +6,11 @@ import BaseLayout from './layout.astro'
 import autoraPhoto from '../assets/carme-miquel.jpg'
 
 const {
-	frontmatter: { title, meta_title, meta_description },
+	frontmatter: { title, meta },
 } = Astro.props
 ---
 
-<BaseLayout
-	color="autora"
-	title={title}
-	meta_title={meta_title}
-	meta_description={meta_description}
->
+<BaseLayout color="autora" title={title} meta={meta}>
 	<slot />
 	<Fragment slot="aside">
 		<Picture alt="" formats={['avif', 'webp']} src={autoraPhoto} width={200} />

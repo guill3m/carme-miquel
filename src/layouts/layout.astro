@@ -8,13 +8,15 @@ import SiteFooter from '../components/site-footer.astro'
 import IconSprite from '../components/icon-sprite.astro'
 
 interface Props {
-	color: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
+	color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
 	title: string
-	meta_title?: string
-	meta_description?: string
+	meta: {
+		title?: string
+		description?: string
+	}
 }
 
-const { color, title, meta_title, meta_description } = Astro.props
+const { color, title, meta } = Astro.props
 const slots = Astro.slots
 ---
 
@@ -26,8 +28,8 @@ const slots = Astro.slots
 			name="viewport"
 			content="width=device-width,initial-scale=1,viewport-fit=cover"
 		/>
-		<title>{meta_title ? meta_title : `${title} - Carme Miquel`}</title>
-		{meta_description && <meta name="description" content={meta_description} />}
+		<title>{meta.title ? meta.title : `${title} - Carme Miquel`}</title>
+		{meta.description && <meta name="description" content={meta.description} />}
 		{/* Prevent iOS from formatting a book ISBN as a phone number */}
 		<meta name="format-detection" content="telephone=no" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />

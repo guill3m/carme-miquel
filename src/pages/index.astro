@@ -3,10 +3,11 @@ import Layout from '../layouts/layout.astro'
 ---
 
 <Layout
-	color="llibres"
 	title="Welcome to Astro."
-	meta_title="test"
-	meta_description="test2"
+	meta={{
+		title: 'test',
+		description: 'test 2',
+	}}
 >
 	<main>Hello world!</main>
 </Layout>
