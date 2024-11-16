@@ -1,0 +1,14 @@
+[
+	{
+		"id": "infantil",
+		"name": "Infantil"
+	},
+	{
+		"id": "juvenil",
+		"name": "Juvenil"
+	},
+	{
+		"id": "adults",
+		"name": "Adults"
+	}
+]

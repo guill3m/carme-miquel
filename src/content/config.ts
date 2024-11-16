@@ -15,7 +15,7 @@ const article = defineCollection({
 })
 
 const articleCategory = defineCollection({
-	loader: file('src/content/article-categories.json'),
+	loader: file('src/content/article-categories/article-categories.json'),
 	schema: z.object({
 		id: z.string(),
 		name: z.string(),
@@ -51,7 +51,7 @@ const book = defineCollection({
 })
 
 const bookAudience = defineCollection({
-	loader: file('src/content/book-audiences.json'),
+	loader: file('src/content/book-audiences/book-audiences.json'),
 	schema: z.object({
 		id: z.string(),
 		name: z.string(),
@@ -84,7 +84,7 @@ const interview = defineCollection({
 })
 
 const interviewType = defineCollection({
-	loader: file('src/content/interview-types.json'),
+	loader: file('src/content/interview-types/interview-types.json'),
 	schema: z.object({
 		id: z.string(),
 		name: z.string(),
