@@ -88,7 +88,7 @@ const interview = defineCollection({
 		date: z.string().date(),
 		interviewer: z.string(),
 		format: z.string().regex(/audio|text|video/),
-		type: reference('interviewType'),
+		interviewType: reference('interviewType'),
 	}),
 })
 

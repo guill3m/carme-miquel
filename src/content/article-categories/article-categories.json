@@ -111,27 +111,27 @@
 	{
 		"id": "politica-autonomica",
 		"name": "Política autonòmica",
-		"parent": "política"
+		"parent": "politica"
 	},
 	{
 		"id": "politica-cultural-i-linguistica",
 		"name": "Política cultural i linguística",
-		"parent": "política"
+		"parent": "politica"
 	},
 	{
 		"id": "politica-estatal",
 		"name": "Política estatal",
-		"parent": "política"
+		"parent": "politica"
 	},
 	{
 		"id": "politica-internacional",
 		"name": "Política internacional",
-		"parent": "política"
+		"parent": "politica"
 	},
 	{
 		"id": "politics",
 		"name": "Polítics",
-		"parent": "política"
+		"parent": "politica"
 	},
 	{
 		"id": "religions",
