@@ -16,7 +16,7 @@ const article = defineCollection({
 		title: z.string(),
 		date: z.string().date(),
 		publisher: z.string().optional(),
-		tags: reference('articleCategory').array(),
+		tags: z.array(reference('article-category')),
 	}),
 })
 
@@ -24,7 +24,7 @@ const articleCategory = defineCollection({
 	loader: file('src/content/article-categories/article-categories.yaml'),
 	schema: z.object({
 		name: z.string(),
-		parent: reference('articleCategory').optional(),
+		parent: z.optional(reference('article-category')),
 	}),
 })
 
@@ -38,7 +38,7 @@ const book = defineCollection({
 		title: z.string(),
 		publisher: z.string(),
 		year: z.number().min(1900).max(2024),
-		audience: reference('bookAudience').array(),
+		audience: z.array(reference('book-audience')),
 		isbn: z
 			.string()
 			.regex(
@@ -87,7 +87,7 @@ const interview = defineCollection({
 		date: z.string().date(),
 		interviewer: z.string(),
 		format: z.string().regex(/audio|text|video/),
-		interviewType: reference('interviewType'),
+		interviewType: reference('interview-type'),
 	}),
 })
 
@@ -114,11 +114,11 @@ const video = defineCollection({
 
 export const collections = {
 	article,
-	articleCategory,
+	'article-category': articleCategory,
 	book,
-	bookAudience,
-	bookDocuments,
+	'book-audience': bookAudience,
+	'book-documents': bookDocuments,
 	interview,
-	interviewType,
+	'interview-type': interviewType,
 	video,
 }
