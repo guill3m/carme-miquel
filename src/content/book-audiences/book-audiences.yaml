@@ -1,0 +1,11 @@
+infantil:
+  name: 'Infantil'
+  order: 1
+
+juvenil:
+  name: 'Juvenil'
+  order: 2
+
+adults:
+  name: 'Adults'
+  order: 3

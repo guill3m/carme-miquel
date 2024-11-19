@@ -21,9 +21,8 @@ const article = defineCollection({
 })
 
 const articleCategory = defineCollection({
-	loader: file('src/content/article-categories/article-categories.json'),
+	loader: file('src/content/article-categories/article-categories.yaml'),
 	schema: z.object({
-		id: z.string(),
 		name: z.string(),
 		parent: reference('articleCategory').optional(),
 	}),
@@ -58,10 +57,10 @@ const book = defineCollection({
 })
 
 const bookAudience = defineCollection({
-	loader: file('src/content/book-audiences/book-audiences.json'),
+	loader: file('src/content/book-audiences/book-audiences.yaml'),
 	schema: z.object({
-		id: z.string(),
 		name: z.string(),
+		order: z.number(),
 	}),
 })
 
@@ -93,10 +92,10 @@ const interview = defineCollection({
 })
 
 const interviewType = defineCollection({
-	loader: file('src/content/interview-types/interview-types.json'),
+	loader: file('src/content/interview-types/interview-types.yaml'),
 	schema: z.object({
-		id: z.string(),
-		name: z.string(),
+		namePlural: z.string(),
+		nameSingular: z.string(),
 	}),
 })
 

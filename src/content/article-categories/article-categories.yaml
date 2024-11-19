@@ -1,0 +1,122 @@
+agricultura-i-horta:
+  name: 'Agricultura i Horta'
+
+altres:
+  name: 'Altres'
+
+canvi-climatic:
+  name: 'Canvi climàtic'
+  parent: 'medi-ambient'
+
+conflictes-i-guerres:
+  name: 'Conflictes i Guerres'
+
+consumisme:
+  name: 'Consumisme'
+  parent: 'economia'
+
+crisi-economica:
+  name: 'Crisi econòmica'
+
+drets-humans:
+  name: 'Drets Humans'
+  parent: 'el-mon'
+
+dones:
+  name: 'Dones'
+
+economia:
+  name: 'Economia'
+
+educacio:
+  name: 'Educació'
+
+el-mon:
+  name: 'El món'
+
+energies:
+  name: 'Energies'
+  parent: 'medi-ambient'
+
+esglesia:
+  name: 'Església'
+  parent: 'religions'
+
+espais-i-paisatges:
+  name: 'Espais i Paisatges'
+  parent: 'medi-ambient'
+
+gent:
+  name: 'Gent'
+
+gent-nostra:
+  name: 'Gent nostra'
+  parent: 'gent'
+
+immigracio-i-multicultura:
+  name: 'Immigració i multicultura'
+
+infants:
+  name: 'Infants'
+
+joves:
+  name: 'Joves'
+
+llengua:
+  name: 'Llengua'
+
+medi-ambient:
+  name: 'Medi Ambient'
+
+mitjans-de-comunicacio:
+  name: 'Mitjans de comunicació'
+
+moviments-socials:
+  name: 'Moviments socials'
+  parent: 'societat'
+
+pobresa:
+  name: 'Pobresa'
+  parent: 'el-mon'
+
+politica:
+  name: 'Política'
+
+politica-autonomica:
+  name: 'Política autonòmica'
+  parent: 'politica'
+
+politica-cultural-i-linguistica:
+  name: 'Política cultural i linguística'
+  parent: 'politica'
+
+politica-estatal:
+  name: 'Política estatal'
+  parent: 'politica'
+
+politica-internacional:
+  name: 'Política internacional'
+  parent: 'politica'
+
+politics:
+  name: 'Polítics'
+  parent: 'politica'
+
+religions:
+  name: 'Religions'
+
+societat:
+  name: 'Societat'
+
+territori-i-urbanisme:
+  name: 'Territori i urbanisme'
+
+tradicions-i-costums:
+  name: 'Tradiciens i Costums'
+  parent: 'societat'
+
+valencia-ciutat:
+  name: 'València ciutat'
+
+violencia:
+  name: 'Violència'
