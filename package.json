@@ -10,7 +10,8 @@
 		"astro": "astro",
 		"lint": "astro check && npm run lint:format && npm run lint:js",
 		"lint:format": "prettier --check .",
-		"lint:js": "eslint"
+		"lint:js": "eslint",
+		"test": "vitest"
 	},
 	"dependencies": {
 		"@astrojs/sitemap": "^3.2.1",
@@ -28,6 +29,10 @@
 		"prettier": "^3.3.3",
 		"prettier-plugin-astro": "^0.14.1",
 		"sass": "^1.81.0",
-		"typescript": "^5.6.3"
+		"typescript": "^5.6.3",
+		"vitest": "^2.1.5"
+	},
+	"overrides": {
+		"vite": "6.0.0-beta.6"
 	}
 }
