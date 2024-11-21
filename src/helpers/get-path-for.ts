@@ -13,21 +13,21 @@ export function getPathFor(
 ): string {
 	switch (contentType) {
 		case 'article':
-			return `/article/${entryId}`
+			return `/article/${entryId}/`
 		case 'article-category':
-			return `/articles${parentEntryId ? `/${parentEntryId}/` : '/'}${entryId}`
+			return `/articles${parentEntryId ? `/${parentEntryId}/` : '/'}${entryId}/`
 		case 'book':
-			return `/llibre/${entryId}`
+			return `/llibre/${entryId}/`
 		case 'book-audience':
-			return `/llibres/${entryId}`
+			return `/llibres/${entryId}/`
 		case 'book-documents':
-			return `/llibre/${entryId}/documents`
+			return `/llibre/${entryId}/documents/`
 		case 'interview':
-			return `/entrevista/${entryId}`
+			return `/entrevista/${entryId}/`
 		case 'video':
-			return `/video/${entryId}`
+			return `/video/${entryId}/`
 		case 'page':
 		default:
-			return `/${entryId}`
+			return `/${entryId}/`
 	}
 }

@@ -6,4 +6,5 @@ import sitemap from '@astrojs/sitemap'
 export default defineConfig({
 	integrations: [sitemap()],
 	site: 'https://www.carmemiquel.com',
+	trailingSlash: 'always',
 })
