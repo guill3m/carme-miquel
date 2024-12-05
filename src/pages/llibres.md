@@ -2,7 +2,7 @@
 layout: '../layouts/llibres.astro'
 title: 'Llibres'
 meta:
-  description: 'pPr a la classificació dels llibres de Carme Miquel hom ha partit de la idea generalitzada de «literatura infantil» com aquella dirigida bàsicament a lectors i lectores fins els onze o dotze anys i incloem dins de la visió de «literatura juvenil» aquella, el nucli de lectors de la qual, està entre els dotze i els dèsset anys d’edat.'
+  description: 'Per a la classificació dels llibres de Carme Miquel hom ha partit de la idea generalitzada de «literatura infantil» com aquella dirigida bàsicament a lectors i lectores fins els onze o dotze anys i incloem dins de la visió de «literatura juvenil» aquella, el nucli de lectors de la qual, està entre els dotze i els dèsset anys d’edat.'
 audiencesTitle: 'Per públic'
 ---
 
