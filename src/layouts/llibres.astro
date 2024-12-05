@@ -9,8 +9,8 @@ const audiences = await getCollection('book-audience')
 const audiencesList = audiences
 	.sort((a, b) => a.data.order - b.data.order)
 	.map((audience) => ({
-		url: getPathFor('book-audience', audience.id),
 		name: audience.data.name,
+		url: getPathFor('book-audience', audience.id),
 	}))
 
 const {

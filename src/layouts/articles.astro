@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from './layout.astro'
+import LinkList from '../components/link-list.astro'
+import { getPathFor } from '../helpers/get-path-for'
+
+const categories = await getCollection('article-category')
+
+function getChildCategoriesList(
+	parentId: string,
+): { name: string; url: string }[] {
+	return categories
+		.filter((childCategory) => childCategory.data.parent?.id === parentId)
+		.map((child) => ({
+			name: child.data.name,
+			url: getPathFor('article-category', child.id, parentId),
+		}))
+		.sort((a, b) => a.name.localeCompare(b.name, 'ca'))
+}
+
+const categoriesList = categories
+	.filter((category) => !category.data.parent)
+	.map((category) => ({
+		name: category.data.name,
+		url: getPathFor('article-category', category.id),
+		items: getChildCategoriesList(category.id),
+	}))
+	.sort((a, b) => a.name.localeCompare(b.name, 'ca'))
+
+const {
+	frontmatter: { title, meta },
+} = Astro.props
+---
+
+<BaseLayout color="articles" title={title} meta={meta}>
+	<LinkList items={categoriesList} />
+	<hr />
+	<slot />
+</BaseLayout>

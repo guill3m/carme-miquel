@@ -118,6 +118,13 @@ p {
 	margin: 0;
 }
 
+ul,
+ol {
+	li::marker {
+		color: var(--color-highlight);
+	}
+}
+
 small {
 	font-size: 0.8rem;
 }

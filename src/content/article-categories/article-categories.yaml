@@ -17,6 +17,7 @@ consumisme:
 
 crisi-economica:
   name: 'Crisi econòmica'
+  parent: 'economia'
 
 drets-humans:
   name: 'Drets Humans'
@@ -112,7 +113,7 @@ territori-i-urbanisme:
   name: 'Territori i urbanisme'
 
 tradicions-i-costums:
-  name: 'Tradiciens i Costums'
+  name: 'Tradicions i Costums'
   parent: 'societat'
 
 valencia-ciutat:
