@@ -3,8 +3,12 @@ import styles from './link-list.module.scss'
 
 interface Props {
 	items: {
-		url: string
 		name: string
+		url: string
+		items?: {
+			name: string
+			url: string
+		}[]
 	}[]
 }
 
@@ -16,6 +20,15 @@ const { items } = Astro.props
 		items.map((item) => (
 			<li>
 				<a href={item.url}>{item.name}</a>
+				{item.items && (
+					<ul>
+						{item.items.map((child) => (
+							<li>
+								<a href={child.url}>{child.name}</a>
+							</li>
+						))}
+					</ul>
+				)}
 			</li>
 		))
 	}

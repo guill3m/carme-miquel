@@ -1,6 +1,23 @@
 .link-list {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	line-height: 1.8;
 	list-style: none;
 	padding-left: 0;
+
+	ul {
+		list-style: none;
+		padding-left: 1em;
+		font-size: 0.9em;
+	}
+
+	@media (width >= 760px) {
+		:global(.articles) & {
+			column-count: 2;
+			column-gap: 2em;
+
+			li {
+				break-inside: avoid-column;
+			}
+		}
+	}
 }
