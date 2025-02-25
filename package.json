@@ -11,6 +11,7 @@
 		"lint": "astro check && npm run lint:format && npm run lint:js",
 		"lint:format": "prettier --check .",
 		"lint:js": "eslint",
+		"format": "prettier --write .",
 		"test": "vitest"
 	},
 	"dependencies": {
