@@ -78,8 +78,8 @@ const bookDocuments = defineCollection({
 
 const interview = defineCollection({
 	loader: glob({
-		base: 'src/content/interiews',
-		pattern: 'base.md',
+		base: 'src/content/interviews',
+		pattern: '*.md',
 	}),
 	schema: z.object({
 		meta,
