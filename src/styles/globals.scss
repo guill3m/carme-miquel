@@ -112,6 +112,32 @@ a:focus {
 	outline: thin dotted;
 }
 
+a[href^="https://"]
+{
+	&::after {
+		background-color: var(--color-highlight);
+		content: ' ';
+		display: inline-block;
+		margin: 0 0.15em;
+		mask: no-repeat center / 0.6em
+			url('../assets/opens-in-a-new-tab.svg?no-inline');
+		transition: background-color 256ms var(--cubic-bezier-ease-out);
+		height: 1em;
+		vertical-align: middle;
+		width: 0.6em;
+	}
+
+	&:hover::after,
+	&:focus::after {
+		background-color: var(--color-foreground);
+		transition-timing-function: var(--cubic-bezier-ease-in);
+	}
+
+	&:active::after {
+		background-color: var(--color-primary);
+	}
+}
+
 p {
 	line-height: 1.4;
 	font-size: 1rem;
