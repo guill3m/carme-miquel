@@ -9,7 +9,7 @@ const meta = z.object({
 const article = defineCollection({
 	loader: glob({
 		base: 'src/content/articles',
-		pattern: '.md',
+		pattern: '.mdx',
 	}),
 	schema: z.object({
 		meta,
@@ -31,7 +31,7 @@ const articleCategory = defineCollection({
 const book = defineCollection({
 	loader: glob({
 		base: 'src/content/books',
-		pattern: ['*.md', '!*.documents.md'],
+		pattern: ['*.mdx', '!*.documents.mdx'],
 	}),
 	schema: z.object({
 		meta,
@@ -67,7 +67,7 @@ const bookAudience = defineCollection({
 const bookDocuments = defineCollection({
 	loader: glob({
 		base: 'src/content/books',
-		pattern: '*.documents.md',
+		pattern: '*.documents.mdx',
 	}),
 	schema: z.object({
 		book: reference('book'),
@@ -79,7 +79,7 @@ const bookDocuments = defineCollection({
 const interview = defineCollection({
 	loader: glob({
 		base: 'src/content/interviews',
-		pattern: '*.md',
+		pattern: '*.mdx',
 	}),
 	schema: z.object({
 		meta,
@@ -102,7 +102,7 @@ const interviewType = defineCollection({
 const video = defineCollection({
 	loader: glob({
 		base: 'src/content/videos',
-		pattern: '*.md',
+		pattern: '*.mdx',
 	}),
 	schema: z.object({
 		meta,
