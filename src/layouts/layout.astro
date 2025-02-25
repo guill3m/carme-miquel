@@ -10,10 +10,7 @@ import IconSprite from '../components/icon-sprite.astro'
 interface Props {
 	color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
 	title: string
-	meta: {
-		title?: string
-		description?: string
-	}
+	meta: { title?: string; description?: string }
 }
 
 const { color, title, meta } = Astro.props
@@ -36,6 +33,13 @@ const slots = Astro.slots
 		<link rel="author" href={`${Astro.site}humans.txt`} />
 	</head>
 	<body class={color}>
+		<script
+			is:inline
+			defer
+			data-domains="www.carmemiquel.com"
+			data-host-url={import.meta.env.UMAMI_ANALYTICS_HOST}
+			data-website-id={import.meta.env.UMAMI_ANALYTICS_ID}
+			src={import.meta.env.UMAMI_ANALYTICS_SCRIPT}></script>
 		<SiteHeader />
 		<main class={styles.main}>
 			<h1 class={styles.title}>{title}</h1>
