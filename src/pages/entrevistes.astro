@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../layouts/layout.astro'
+import LinkList from '../components/link-list.astro'
+import { getPathFor } from '../helpers/get-path-for'
+
+const interviews = await getCollection('interview')
+
+const interviewTypes = await getCollection('interview-type')
+const interviewTypeList = interviewTypes.map((interviewType) => ({
+	name: interviewType.data.namePlural,
+	items: interviews
+		.filter((interview) => interviewType.id === interview.data.interviewType.id)
+		.map((interview) => ({
+			name: interview.data.title,
+			url: getPathFor('interview', interview.id),
+		})),
+}))
+---
+
+<BaseLayout
+	color="entrevistes"
+	title="Entrevistes"
+	meta={{ description: 'Recull d’entrevistes i col·loquis amb Carme Miquel.' }}
+>
+	{
+		interviewTypeList.map((interviewType, index) => {
+			return (
+				<>
+					{index !== 0 && <hr />}
+					<h2>{interviewType.name}</h2>
+					<LinkList items={interviewType.items} />
+				</>
+			)
+		})
+	}
+</BaseLayout>

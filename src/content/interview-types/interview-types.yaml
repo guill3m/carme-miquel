@@ -1,7 +1,7 @@
-conversa:
-  namePlural: 'Col·loquis amb estudiants'
-  nameSingular: 'Conferència'
-
 entrevista:
   namePlural: 'Entrevistes'
   nameSingular: 'Entrevista'
+
+conversa:
+  namePlural: 'Col·loquis amb estudiants'
+  nameSingular: 'Conferència'
