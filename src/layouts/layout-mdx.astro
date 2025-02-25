@@ -1,0 +1,11 @@
+---
+import BaseLayout from './layout.astro'
+
+const {
+	frontmatter: { color, title, meta },
+} = Astro.props
+---
+
+<BaseLayout color={color} title={title} meta={meta}>
+	<slot />
+</BaseLayout>
