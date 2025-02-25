@@ -19,7 +19,7 @@ const linkText = linkContent('body').text()
 
 let ariaLabelOpensInNewTab = undefined
 if (linkTarget === '_blank') {
-	ariaLabelOpensInNewTab = `${linkText} (s'obre en una pestanya nova)`
+	ariaLabelOpensInNewTab = `${linkText} (s’obre en una pestanya nova)`
 }
 
 const linkAriaLabel = ariaLabel ?? ariaLabelOpensInNewTab
