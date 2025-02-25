@@ -3,8 +3,8 @@
 	--color-background-dark: rgb(248 248 248);
 	--color-background-dark-h: rgb(240 240 240);
 	--color-highlight: rgb(65 65 65);
-	--color-text: rgb(65 65 65);
-	--color-text-light: rgb(160 160 160);
+	--color-foreground: rgb(65 65 65);
+	--color-foreground-light: rgb(160 160 160);
 	--cubic-bezier-ease-in: cubic-bezier(0.3, 0, 1, 1);
 	--cubic-bezier-ease-out: cubic-bezier(0, 0, 0.7, 1);
 	--font-stack-sans: 'Open Sans', 'Open Sans Fallback', sans-serif;
@@ -47,7 +47,7 @@ html {
 
 body {
 	background: var(--color-background);
-	color: var(--color-text);
+	color: var(--color-foreground);
 	font-family: var(--font-stack-sans);
 	font-weight: 400;
 	margin: 0;
@@ -79,7 +79,7 @@ h2 {
 }
 
 h3 {
-	color: var(--color-text-light);
+	color: var(--color-foreground-light);
 	font-size: 1.5rem;
 	line-height: 1.4;
 }
@@ -95,16 +95,16 @@ a {
 }
 
 h2 a {
-	color: var(--color-text);
+	color: var(--color-foreground);
 }
 
 h3 a {
-	color: var(--color-text-light);
+	color: var(--color-foreground-light);
 }
 
 a:hover,
 a:focus {
-	color: #000;
+	color: var(--color-foreground);
 	transition-timing-function: var(--cubic-bezier-ease-in);
 }
 
@@ -131,10 +131,6 @@ a[href^="https://"]
 	&:focus::after {
 		background-color: var(--color-foreground);
 		transition-timing-function: var(--cubic-bezier-ease-in);
-	}
-
-	&:active::after {
-		background-color: var(--color-primary);
 	}
 }
 

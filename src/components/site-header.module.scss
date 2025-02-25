@@ -50,7 +50,7 @@
 
 	a:hover,
 	a:focus {
-		background-color: var(--color-text);
+		background-color: var(--color-foreground);
 	}
 
 	svg {
@@ -87,7 +87,7 @@
 			&:hover,
 			&:focus {
 				background: none;
-				color: var(--color-text);
+				color: var(--color-foreground);
 				transition-timing-function: var(--cubic-bezier-ease-in);
 			}
 		}
@@ -105,7 +105,7 @@
 		a:hover,
 		a:focus {
 			svg {
-				background: var(--color-text);
+				background: var(--color-foreground);
 				transition-timing-function: var(--cubic-bezier-ease-in);
 			}
 		}
