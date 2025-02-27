@@ -1,7 +1,7 @@
 export function getPathFor(
 	contentType:
 		| 'article'
-		| 'article-category'
+		| 'article-tag'
 		| 'book'
 		| 'book-audience'
 		| 'book-documents'
@@ -14,7 +14,7 @@ export function getPathFor(
 	switch (contentType) {
 		case 'article':
 			return `/article/${entryId}/`
-		case 'article-category':
+		case 'article-tag':
 			return `/articles${parentEntryId ? `/${parentEntryId}/` : '/'}${entryId}/`
 		case 'book':
 			return `/llibre/${entryId}/`

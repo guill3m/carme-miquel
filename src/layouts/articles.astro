@@ -5,7 +5,7 @@ import BaseLayout from './layout.astro'
 import LinkList from '../components/link-list.astro'
 import { getPathFor } from '../helpers/get-path-for'
 
-const categories = await getCollection('article-category')
+const categories = await getCollection('article-tag')
 
 function getChildCategoriesList(
 	parentId: string,
@@ -14,7 +14,7 @@ function getChildCategoriesList(
 		.filter((childCategory) => childCategory.data.parent?.id === parentId)
 		.map((child) => ({
 			name: child.data.name,
-			url: getPathFor('article-category', child.id, parentId),
+			url: getPathFor('article-tag', child.id, parentId),
 		}))
 		.sort((a, b) => a.name.localeCompare(b.name, 'ca'))
 }
@@ -23,7 +23,7 @@ const categoriesList = categories
 	.filter((category) => !category.data.parent)
 	.map((category) => ({
 		name: category.data.name,
-		url: getPathFor('article-category', category.id),
+		url: getPathFor('article-tag', category.id),
 		items: getChildCategoriesList(category.id),
 	}))
 	.sort((a, b) => a.name.localeCompare(b.name, 'ca'))

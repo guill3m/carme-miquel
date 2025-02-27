@@ -12,15 +12,15 @@ const article = defineCollection({
 		title: z.string(),
 		date: z.date(),
 		publisher: z.string().optional().default('Levante EMV'),
-		tags: z.array(reference('article-category')),
+		tags: z.array(reference('article-tag')),
 	}),
 })
 
-const articleCategory = defineCollection({
-	loader: file('src/content/article-categories/article-categories.yaml'),
+const articleTag = defineCollection({
+	loader: file('src/content/article-tags/article-tags.yaml'),
 	schema: z.object({
 		name: z.string(),
-		parent: z.optional(reference('article-category')),
+		parent: z.optional(reference('article-tag')),
 	}),
 })
 
@@ -85,7 +85,7 @@ const video = defineCollection({
 
 export const collections = {
 	article,
-	'article-category': articleCategory,
+	'article-tag': articleTag,
 	book,
 	'book-audience': bookAudience,
 	'book-documents': bookDocuments,

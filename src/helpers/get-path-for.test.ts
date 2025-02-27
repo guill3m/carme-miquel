@@ -5,12 +5,12 @@ test('article path', () => {
 	expect(getPathFor('article', 'entry')).toBe('/article/entry/')
 })
 
-test('article category path without parent', () => {
-	expect(getPathFor('article-category', 'entry')).toBe('/articles/entry/')
+test('article tag path without parent', () => {
+	expect(getPathFor('article-tag', 'entry')).toBe('/articles/entry/')
 })
 
-test('article category path with parent', () => {
-	expect(getPathFor('article-category', 'entry', 'parent-entry')).toBe(
+test('article tag path with parent', () => {
+	expect(getPathFor('article-tag', 'entry', 'parent-entry')).toBe(
 		'/articles/parent-entry/entry/',
 	)
 })

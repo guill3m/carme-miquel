@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 const { article } = Astro.props
 const { Content } = await render(article)
 
-const articleTags = await getCollection('article-category', (tag) => {
+const articleTags = await getCollection('article-tag', (tag) => {
 	const tags = article.data.tags.map((innerTag) => innerTag.id)
 	return tags.includes(tag.id)
 })
@@ -58,7 +58,7 @@ const jsonLd: WithContext<Article> = {
 		{
 			articleTags.map((tag) => (
 				<h3 class={styles['article-tags']}>
-					<Link href={getPathFor('article-category', tag.id)}>
+					<Link href={getPathFor('article-tag', tag.id)}>
 						{tag.data.name}
 					</Link>
 				</h3>
