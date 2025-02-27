@@ -3,9 +3,9 @@ import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
+import { getPathFor } from '../../helpers/get-path-for'
 
 import styles from '../../styles/article.module.scss'
-import { getPathFor } from '../../helpers/get-path-for'
 
 export async function getStaticPaths() {
 	async function articlesForTag(tagIds: string[]) {
