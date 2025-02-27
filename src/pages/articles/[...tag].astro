@@ -8,7 +8,7 @@ import { getPathFor } from '../../helpers/get-path-for'
 import styles from '../../styles/article.module.scss'
 
 export async function getStaticPaths() {
-	async function articlesForTag(tagIds: string[]) {
+	async function getArticlesForTag(tagIds: string[]) {
 		const articles = await getCollection('article', (article) => {
 			const articleTags = article.data.tags.map((innerTag) => innerTag.id)
 			return tagIds.some((tagId) => articleTags.includes(tagId))
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 		})
 		const chilTagIds = childTags.map((childTag) => childTag.id)
 		const parentTagId = tag.data.parent?.id
-		const articles = await articlesForTag([tag.id, ...chilTagIds])
+		const articles = await getArticlesForTag([tag.id, ...chilTagIds])
 
 		return {
 			params: { tag: parentTagId ? `${parentTagId}/${tag.id}` : tag.id },
@@ -51,11 +51,7 @@ const { tag, articles } = Astro.props
 		title: `Articles sobre ${tag.data.name} - Carme Miquel`,
 	}}
 >
-	<Fragment slot="aside-top">
-		<h2 class={styles['article-tags']}>
-			{tag.data.name}
-		</h2>
-	</Fragment>
+	<h2 slot="aside-top">{tag.data.name}</h2>
 	<ul class={styles['article-list']}>
 		{
 			articles.map((article) => (

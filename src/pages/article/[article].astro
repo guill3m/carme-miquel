@@ -57,9 +57,11 @@ const jsonLd: WithContext<Article> = {
 	<Fragment slot="aside-top">
 		{
 			articleTags.map((tag) => (
-				<h3 class={styles['article-tags']}>
-					<Link href={getPathFor('article-tag', tag.id)}>{tag.data.name}</Link>
-				</h3>
+				<h2>
+					<Link href={getPathFor('article-tag', tag.id, tag.data.parent?.id)}>
+						{tag.data.name}
+					</Link>
+				</h2>
 			))
 		}
 	</Fragment>
