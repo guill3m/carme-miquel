@@ -2,7 +2,10 @@ import { defineCollection, reference, z } from 'astro:content'
 import { glob, file } from 'astro/loaders'
 
 const meta = z
-	.object({ title: z.string().optional(), description: z.string().optional() })
+	.object({
+		title: z.string().optional(),
+		description: z.string().optional(),
+	})
 	.optional()
 
 const article = defineCollection({
@@ -42,18 +45,31 @@ const book = defineCollection({
 			)
 			.optional(),
 		awards: z.string().array().optional(),
-		extra: z.object({ what: z.string(), who: z.string() }).array().optional(),
+		extra: z
+			.object({
+				what: z.string(),
+				who: z.string(),
+			})
+			.array()
+			.optional(),
 	}),
 })
 
 const bookAudience = defineCollection({
 	loader: file('src/content/book-audiences/book-audiences.yaml'),
-	schema: z.object({ name: z.string(), order: z.number() }),
+	schema: z.object({
+		name: z.string(),
+		order: z.number(),
+	}),
 })
 
 const bookDocuments = defineCollection({
 	loader: glob({ base: 'src/content/books', pattern: '*.documents.mdx' }),
-	schema: z.object({ book: reference('book'), meta, title: z.string() }),
+	schema: z.object({
+		book: reference('book'),
+		meta,
+		title: z.string(),
+	}),
 })
 
 const interview = defineCollection({
@@ -70,7 +86,10 @@ const interview = defineCollection({
 
 const interviewType = defineCollection({
 	loader: file('src/content/interview-types/interview-types.yaml'),
-	schema: z.object({ namePlural: z.string(), nameSingular: z.string() }),
+	schema: z.object({
+		namePlural: z.string(),
+		nameSingular: z.string(),
+	}),
 })
 
 const video = defineCollection({
