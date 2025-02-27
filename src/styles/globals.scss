@@ -92,24 +92,26 @@ a,
 
 a {
 	transition: color 256ms var(--cubic-bezier-ease-out);
+
+	&:hover,
+	&:focus {
+		color: var(--color-foreground);
+		transition-timing-function: var(--cubic-bezier-ease-in);
+	}
 }
 
-h2 a {
-	color: var(--color-foreground);
-}
-
+h2 a,
 h3 a {
-	color: var(--color-foreground-light);
-}
-
-a:hover,
-a:focus {
 	color: var(--color-foreground);
-	transition-timing-function: var(--cubic-bezier-ease-in);
+
+	&:hover,
+	&:focus {
+		color: var(--color-foreground-light);
+	}
 }
 
 a:focus {
-	outline: thin dotted;
+	outline: dotted currentcolor;
 }
 
 a[href^="https://"]

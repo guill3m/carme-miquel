@@ -1,0 +1,76 @@
+---
+import { getCollection } from 'astro:content'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+
+import styles from '../../styles/article.module.scss'
+import { getPathFor } from '../../helpers/get-path-for'
+
+export async function getStaticPaths() {
+	async function articlesForTag(tagIds: string[]) {
+		const articles = await getCollection('article', (article) => {
+			const articleTags = article.data.tags.map((innerTag) => innerTag.id)
+			return tagIds.some((tagId) => articleTags.includes(tagId))
+		})
+		return articles
+	}
+
+	const tags = await getCollection('article-tag')
+
+	const staticPaths = tags.map(async (tag) => {
+		const childTags = tags.filter((childTag) => {
+			return childTag.data.parent?.id === tag.id
+		})
+		const chilTagIds = childTags.map((childTag) => childTag.id)
+		const parentTagId = tag.data.parent?.id
+		const articles = await articlesForTag([tag.id, ...chilTagIds])
+
+		return {
+			params: { tag: parentTagId ? `${parentTagId}/${tag.id}` : tag.id },
+			props: {
+				articles,
+				tag: {
+					...tag,
+					children: childTags,
+				},
+			},
+		}
+	})
+
+	return Promise.all(staticPaths)
+}
+
+const { tag, articles } = Astro.props
+---
+
+<BaseLayout
+	color="articles"
+	title="Articles"
+	meta={{
+		title: `Articles sobre ${tag.data.name} - Carme Miquel`,
+	}}
+>
+	<Fragment slot="aside-top">
+		<h2 class={styles['article-tags']}>
+			{tag.data.name}
+		</h2>
+	</Fragment>
+	<ul class={styles['article-list']}>
+		{
+			articles.map((article) => (
+				<li>
+					<h3 class={styles['article-title']}>
+						<Link href={getPathFor('article', article.id)}>
+							{article.data.title}
+						</Link>
+					</h3>
+					<div class={styles['article-meta']}>
+						<span>{article.data.publisher}</span>.{' '}
+						{article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })}.
+					</div>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>

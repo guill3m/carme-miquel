@@ -5,7 +5,7 @@ import type { Article, WithContext } from 'schema-dts'
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
-import styles from '../../styles/article-page.module.scss'
+import styles from '../../styles/article.module.scss'
 import { getPathFor } from '../../helpers/get-path-for'
 
 export async function getStaticPaths() {
@@ -58,9 +58,7 @@ const jsonLd: WithContext<Article> = {
 		{
 			articleTags.map((tag) => (
 				<h3 class={styles['article-tags']}>
-					<Link href={getPathFor('article-tag', tag.id)}>
-						{tag.data.name}
-					</Link>
+					<Link href={getPathFor('article-tag', tag.id)}>{tag.data.name}</Link>
 				</h3>
 			))
 		}
@@ -71,12 +69,14 @@ const jsonLd: WithContext<Article> = {
 			set:html={JSON.stringify(jsonLd)}
 			type="application/ld+json"
 		/>
-		<h1 class={styles['article-title']}>{article.data.title}</h1>
-		<div class={styles['article-meta']}>
-			<span>{article.data.publisher}</span>. {
-				article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
-			}.
-		</div>
+		<header>
+			<h1 class={styles['article-title']}>{article.data.title}</h1>
+			<div class={styles['article-meta']}>
+				<span>{article.data.publisher}</span>. {
+					article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
+				}.
+			</div>
+		</header>
 		<Content components={{ a: Link }} />
 	</article>
 </BaseLayout>
