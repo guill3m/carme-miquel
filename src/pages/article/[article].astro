@@ -1,0 +1,82 @@
+---
+import { getCollection, render } from 'astro:content'
+import type { Article, WithContext } from 'schema-dts'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+
+import styles from '../../styles/article-page.module.scss'
+import { getPathFor } from '../../helpers/get-path-for'
+
+export async function getStaticPaths() {
+	const articles = await getCollection('article')
+	return articles.map((article) => ({
+		params: { article: article.id },
+		props: { article },
+	}))
+}
+
+const { article } = Astro.props
+const { Content } = await render(article)
+
+const articleTags = await getCollection('article-category', (tag) => {
+	const tags = article.data.tags.map((innerTag) => innerTag.id)
+	return tags.includes(tag.id)
+})
+
+const jsonLd: WithContext<Article> = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	name: article.data.title,
+	url: Astro.url.toString(),
+	publisher: article.data.publisher,
+	datePublished: article.data.date.toDateString(),
+	genre: 'Columna d’opinió',
+	author: {
+		'@type': 'Person',
+		name: 'Carme Miquel i Diego',
+		url: Astro.site?.toString(),
+	},
+	inLanguage: {
+		'@type': 'Language',
+		name: 'Catalan',
+		alternateName: 'ca',
+	},
+}
+---
+
+<BaseLayout
+	color="articles"
+	title="Article"
+	meta={{
+		title: `${article.data.title} - Article - Carme Miquel`,
+		...article.data.meta,
+	}}
+	isArticle
+>
+	<Fragment slot="aside-top">
+		{
+			articleTags.map((tag) => (
+				<h3 class={styles['article-tags']}>
+					<Link href={getPathFor('article-category', tag.id)}>
+						{tag.data.name}
+					</Link>
+				</h3>
+			))
+		}
+	</Fragment>
+	<article>
+		<script
+			is:inline
+			set:html={JSON.stringify(jsonLd)}
+			type="application/ld+json"
+		/>
+		<h1 class={styles['article-title']}>{article.data.title}</h1>
+		<div class={styles['article-meta']}>
+			<span>{article.data.publisher}</span>. {
+				article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
+			}.
+		</div>
+		<Content components={{ a: Link }} />
+	</article>
+</BaseLayout>

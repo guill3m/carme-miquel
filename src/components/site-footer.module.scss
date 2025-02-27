@@ -2,7 +2,7 @@
 	color: var(--color-foreground-light);
 	font-family: var(--font-stack-serif);
 	font-size: 0.8rem;
-	margin-left: auto;
+	margin: 2rem auto 1rem;
 	margin-right: auto;
 	max-width: var(--max-width);
 	width: 100%;
@@ -13,7 +13,6 @@
 		display: grid;
 		gap: 2rem;
 		grid-template-columns: repeat(3, 1fr);
-		margin-top: 2rem;
 
 		p {
 			margin: 0;

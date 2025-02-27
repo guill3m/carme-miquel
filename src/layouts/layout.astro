@@ -10,11 +10,14 @@ import IconSprite from '../components/icon-sprite.astro'
 interface Props {
 	color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
 	title: string
-	meta: { title?: string; description?: string }
+	meta?: { title?: string; description?: string }
+	isArticle?: boolean
 }
 
-const { color, title, meta } = Astro.props
+const { color, title, meta, isArticle } = Astro.props
 const slots = Astro.slots
+
+const TitleTag = isArticle ? 'div' : 'h1'
 ---
 
 <!doctype html>
@@ -25,8 +28,12 @@ const slots = Astro.slots
 			name="viewport"
 			content="width=device-width,initial-scale=1,viewport-fit=cover"
 		/>
-		<title>{meta.title ? meta.title : `${title} - Carme Miquel`}</title>
-		{meta.description && <meta name="description" content={meta.description} />}
+		<title>{meta?.title ? meta.title : `${title} - Carme Miquel`}</title>
+		{
+			meta?.description && (
+				<meta name="description" content={meta.description} />
+			)
+		}
 		{/* Prevent iOS from formatting a book ISBN as a phone number */}
 		<meta name="format-detection" content="telephone=no" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -42,7 +49,10 @@ const slots = Astro.slots
 			src={import.meta.env.UMAMI_ANALYTICS_SCRIPT}></script>
 		<SiteHeader />
 		<main class={styles.main}>
-			<h1 class={styles.title}>{title}</h1>
+			<div class={styles['title-aside']}>
+				<TitleTag class={styles.title}>{title}</TitleTag>
+				{slots.has('aside-top') && <slot name="aside-top" />}
+			</div>
 			<div class={styles.content}>
 				<slot>Hello world!</slot>
 			</div>
