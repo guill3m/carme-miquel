@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content'
+import { Picture } from 'astro:assets'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+import { getPathFor } from '../../helpers/get-path-for'
+
+import styles from '../../styles/book-audience.module.scss'
+
+export async function getStaticPaths() {
+	async function getBooksForAudience(audienceId: string) {
+		const books = await getCollection('book', (book) => {
+			const bookAudiences = book.data.audience.map(
+				(innerAudience) => innerAudience.id,
+			)
+			return bookAudiences.includes(audienceId)
+		})
+		return books
+	}
+
+	const audiences = await getCollection('book-audience')
+
+	const staticPaths = audiences.map(async (audience) => {
+		const books = await getBooksForAudience(audience.id)
+
+		return {
+			params: { audience: audience.id },
+			props: {
+				audience,
+				books,
+			},
+		}
+	})
+
+	return Promise.all(staticPaths)
+}
+
+const { audience, books } = Astro.props
+---
+
+<BaseLayout
+	color="llibres"
+	title="Llibres"
+	meta={{
+		title: `Llibres ${audience.data.name} - Carme Miquel`,
+	}}
+>
+	<h2 slot="aside-top">{audience.data.name}</h2>
+	<ul class={styles['book-list']}>
+		{
+			books.map((book) => (
+				<li class={styles.book}>
+					<Link href={getPathFor('book', book.id)}>
+						<Picture
+							alt=""
+							class={styles['book-cover']}
+							formats={['avif', 'webp']}
+							densities={[1.5, 2, 3]}
+							height={204}
+							src={book.data.cover}
+						/>
+						<div class={styles['book-details']}>
+							<strong>{book.data.title}</strong>
+							<br />
+							<span>
+								{book.data.publisher} ({book.data.year})
+							</span>
+						</div>
+					</Link>
+				</li>
+			))
+		}
+	</ul>
+</BaseLayout>

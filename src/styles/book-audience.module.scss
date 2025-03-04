@@ -1,0 +1,56 @@
+.book-list {
+	display: grid;
+	gap: 2rem;
+	grid-auto-flow: dense;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&:hover a:not(:hover) {
+		opacity: 0.5;
+	}
+}
+
+.book {
+	height: 12rem;
+
+	a {
+		background: var(--color-background-dark);
+		border-radius: 0.25rem;
+		display: block;
+		font-size: 1.1rem;
+		height: 100%;
+		overflow: hidden;
+		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			background: var(--color-background-dark-h);
+			transform: scale(1.05);
+		}
+	}
+}
+
+.book-cover {
+	float: left;
+	margin-right: 1em;
+	height: 100%;
+	width: auto;
+}
+
+.book-details {
+	padding: 1rem;
+
+	span {
+		color: var(--color-foreground-light);
+		font-size: 0.8em;
+	}
+}
+
+@media (width >= 940px) {
+	.book-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

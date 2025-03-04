@@ -32,27 +32,29 @@ const book = defineCollection({
 		base: 'src/content/books',
 		pattern: ['*.mdx', '!*.documents.mdx'],
 	}),
-	schema: z.object({
-		meta,
-		title: z.string(),
-		publisher: z.string(),
-		year: z.number().min(1900).max(2024),
-		audience: z.array(reference('book-audience')),
-		isbn: z
-			.string()
-			.regex(
-				/^(?=[0-9]{13}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)97[89][-\ ]?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9]$$/,
-			)
-			.optional(),
-		awards: z.string().array().optional(),
-		extra: z
-			.object({
-				what: z.string(),
-				who: z.string(),
-			})
-			.array()
-			.optional(),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			meta,
+			title: z.string(),
+			publisher: z.string(),
+			year: z.number().min(1900).max(2024),
+			audience: z.array(reference('book-audience')),
+			cover: image(),
+			isbn: z
+				.string()
+				.regex(
+					/^(?=[0-9]{13}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)97[89][-\ ]?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9]$$/,
+				)
+				.optional(),
+			awards: z.string().array().optional(),
+			details: z
+				.object({
+					what: z.string(),
+					who: z.string(),
+				})
+				.array()
+				.optional(),
+		}),
 })
 
 const bookAudience = defineCollection({
