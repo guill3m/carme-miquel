@@ -91,7 +91,11 @@ a,
 }
 
 a {
-	transition: color 256ms var(--cubic-bezier-ease-out);
+	transition:
+		background-color 256ms var(--cubic-bezier-ease-out),
+		color 256ms var(--cubic-bezier-ease-out),
+		opacity 256ms var(--cubic-bezier-ease-out),
+		transform 128ms var(--cubic-bezier-ease-out);
 
 	&:hover,
 	&:focus {

@@ -21,6 +21,10 @@
 	list-style: none;
 	padding: 0;
 
+	&:hover a:not(:hover) {
+		--color-highlight: var(--color-foreground-light);
+	}
+
 	li {
 		font-size: 1rem;
 		font-weight: 600;
@@ -40,17 +44,11 @@
 		display: block;
 		padding: 0 1em;
 		text-decoration: none;
-		transition: background-color 256ms var(--cubic-bezier-ease-out);
 
 		&:hover,
 		&:focus {
-			transition-timing-function: var(--cubic-bezier-ease-in);
+			background-color: var(--color-foreground);
 		}
-	}
-
-	a:hover,
-	a:focus {
-		background-color: var(--color-foreground);
 	}
 
 	svg {
@@ -82,13 +80,11 @@
 			color: var(--color-highlight);
 			text-align: center;
 			padding: 0;
-			transition: color 256ms var(--cubic-bezier-ease-out);
 
 			&:hover,
 			&:focus {
 				background: none;
-				color: var(--color-foreground);
-				transition-timing-function: var(--cubic-bezier-ease-in);
+				transform: scale(1.1);
 			}
 		}
 
@@ -105,7 +101,6 @@
 		a:hover,
 		a:focus {
 			svg {
-				background: var(--color-foreground);
 				transition-timing-function: var(--cubic-bezier-ease-in);
 			}
 		}
