@@ -47,9 +47,7 @@ const { tag, articles } = Astro.props
 <BaseLayout
 	color="articles"
 	title="Articles"
-	meta={{
-		title: `Articles sobre ${tag.data.name} - Carme Miquel`,
-	}}
+	meta={{ title: `Articles sobre ${tag.data.name}` }}
 >
 	<h2 slot="aside-top">{tag.data.name}</h2>
 	<ul class={styles['article-list']}>

@@ -29,7 +29,7 @@ const TitleTag = isArticle ? 'div' : 'h1'
 			name="viewport"
 			content="width=device-width,initial-scale=1,viewport-fit=cover"
 		/>
-		<title>{meta?.title ? meta.title : `${title} - Carme Miquel`}</title>
+		<title>{`${meta?.title ?? title} - Carme Miquel`}</title>
 		{
 			meta?.description && (
 				<meta name="description" content={meta.description} />
