@@ -13,6 +13,12 @@ const {
 <BaseLayout color="autora" title={title} meta={meta}>
 	<slot />
 	<Fragment slot="aside">
-		<Picture alt="" formats={['avif', 'webp']} src={autoraPhoto} width={200} />
+		<Picture
+			alt=""
+			densities={[1.5, 2, 3]}
+			formats={['avif', 'webp']}
+			src={autoraPhoto}
+			width={200}
+		/>
 	</Fragment>
 </BaseLayout>
