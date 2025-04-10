@@ -12,13 +12,13 @@ interface Props {
 	color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
 	title: string
 	meta?: { title?: string; description?: string }
-	isArticle?: boolean
+	isSingle?: boolean
 }
 
-const { color, title, meta, isArticle } = Astro.props
+const { color, title, meta, isSingle } = Astro.props
 const slots = Astro.slots
 
-const TitleTag = isArticle ? 'div' : 'h1'
+const TitleTag = isSingle ? 'div' : 'h1'
 ---
 
 <!doctype html>
