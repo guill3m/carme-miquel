@@ -76,14 +76,20 @@ const bookDocuments = defineCollection({
 
 const interview = defineCollection({
 	loader: glob({ base: 'src/content/interviews', pattern: '*.mdx' }),
-	schema: z.object({
-		meta,
-		title: z.string(),
-		date: z.date(),
-		interviewer: z.string(),
-		format: z.string().regex(/audio|text|video/),
-		interviewType: reference('interview-type'),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			meta,
+			title: z.string().optional(),
+			date: z.date(),
+			dateFormated: z.string().optional(),
+			issue: z.string().optional(),
+			interviewer: z.string(),
+			format: z.enum(['audio', 'text', 'video']),
+			language: z.enum(['ca', 'es']).optional().default('ca'),
+			type: reference('interview-type'),
+			asideImage: image().optional(),
+			asideContent: z.string().optional(),
+		}),
 })
 
 const interviewType = defineCollection({

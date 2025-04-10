@@ -11,9 +11,9 @@ const interviewTypes = await getCollection('interview-type')
 const interviewTypeList = interviewTypes.map((interviewType) => ({
 	name: interviewType.data.namePlural,
 	items: interviews
-		.filter((interview) => interviewType.id === interview.data.interviewType.id)
+		.filter((interview) => interviewType.id === interview.data.type.id)
 		.map((interview) => ({
-			name: interview.data.title,
+			name: interview.data.title ?? interview.data.interviewer,
 			url: getPathFor('interview', interview.id),
 		})),
 }))

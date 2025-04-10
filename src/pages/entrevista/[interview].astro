@@ -1,0 +1,115 @@
+---
+import { Picture } from 'astro:assets'
+import { getCollection, getEntry, render } from 'astro:content'
+import type { Article, WithContext } from 'schema-dts'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+
+import styles from '../../styles/interview.module.scss'
+
+export async function getStaticPaths() {
+	const interviews = await getCollection('interview')
+
+	const staticPaths = interviews.map(async (interview) => {
+		const interviewType = await getEntry(interview.data.type)
+
+		return {
+			params: { interview: interview.id },
+			props: { interview, interviewType },
+		}
+	})
+
+	return Promise.all(staticPaths)
+}
+
+const { interview, interviewType } = Astro.props
+const { Content } = await render(interview)
+
+const languageName = (language: 'ca' | 'es') => {
+	if (language === 'ca') {
+		return 'Catalan'
+	}
+
+	if (language === 'es') {
+		return 'Spanish'
+	}
+
+	throw new Error('Invalid interview language')
+}
+
+const InterviewerTag = interview.data.title ? 'div' : 'h1'
+const interviewTitle = interview.data.title ?? interview.data.interviewer
+
+const jsonLd: WithContext<Article> = {
+	'@context': 'https://schema.org',
+	'@type': 'Article',
+	name: interviewTitle,
+	url: Astro.url.toString(),
+	publisher: interview.data.interviewer,
+	datePublished: interview.data.date.toDateString(),
+	genre: interviewType.data.nameSingular,
+	inLanguage: {
+		'@type': 'Language',
+		name: languageName(interview.data.language),
+		alternateName: interview.data.language,
+	},
+}
+---
+
+<BaseLayout
+	color="entrevistes"
+	title="Entrevista"
+	meta={{
+		title: `${interviewTitle} - ${interviewType.data.nameSingular}`,
+		...interview.data.meta,
+	}}
+	isSingle
+>
+	<Fragment slot="aside-top">
+		<InterviewerTag class={styles['interview-title']}
+			>{interview.data.interviewer}</InterviewerTag
+		>
+		<div class={styles['interview-date']}>
+			{
+				interview.data.dateFormated ??
+					interview.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
+			}
+			{
+				interview.data.issue && (
+					<>
+						<br />
+						{interview.data.issue}
+					</>
+				)
+			}
+		</div>
+	</Fragment>
+	<article class={styles.interview}>
+		<script
+			is:inline
+			set:html={JSON.stringify(jsonLd)}
+			type="application/ld+json"
+		/>
+		{interview.data.title && <h1>{interview.data.title}</h1>}
+		<Content components={{ a: Link }} />
+	</article>
+	<Fragment slot="aside">
+		{
+			interview.data.asideImage && (
+				<Picture
+					alt=""
+					densities={[1.5, 2, 3]}
+					formats={['avif', 'webp']}
+					src={interview.data.asideImage}
+					width={200}
+				/>
+			)
+		}
+		{
+			interview.data.asideContent && (
+				<Fragment set:html={interview.data.asideContent} />
+			)
+		}
+	</Fragment>
+</BaseLayout>

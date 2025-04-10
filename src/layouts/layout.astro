@@ -59,9 +59,9 @@ const TitleTag = isSingle ? 'div' : 'h1'
 			</div>
 			{
 				slots.has('aside') && (
-					<div class={styles.aside}>
+					<aside class={styles.aside}>
 						<slot name="aside" />
-					</div>
+					</aside>
 				)
 			}
 		</main>
