@@ -1,6 +1,7 @@
 ---
-import { getCollection, render } from 'astro:content'
 import type { Article, WithContext } from 'schema-dts'
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import { getCollection, render } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
@@ -8,13 +9,15 @@ import { getPathFor } from '../../helpers/get-path-for'
 
 import styles from '../../styles/article.module.scss'
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
 	const articles = await getCollection('article')
 	return articles.map((article) => ({
 		params: { article: article.id },
 		props: { article },
 	}))
-}
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { article } = Astro.props
 const { Content } = await render(article)

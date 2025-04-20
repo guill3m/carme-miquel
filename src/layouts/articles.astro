@@ -5,6 +5,20 @@ import BaseLayout from './layout.astro'
 import LinkList from '../components/link-list.astro'
 import { getPathFor } from '../helpers/get-path-for'
 
+interface Props {
+	frontmatter: {
+		title: string
+		meta?: {
+			title?: string
+			description?: string
+		}
+	}
+}
+
+const {
+	frontmatter: { title, meta },
+} = Astro.props
+
 const categories = await getCollection('article-tag')
 
 function getChildCategoriesList(
@@ -27,10 +41,6 @@ const categoriesList = categories
 		items: getChildCategoriesList(category.id),
 	}))
 	.sort((a, b) => a.name.localeCompare(b.name, 'ca'))
-
-const {
-	frontmatter: { title, meta },
-} = Astro.props
 ---
 
 <BaseLayout color="articles" title={title} meta={meta}>

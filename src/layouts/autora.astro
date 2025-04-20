@@ -5,6 +5,16 @@ import BaseLayout from './layout.astro'
 
 import autoraPhoto from '../assets/carme-miquel.jpg'
 
+interface Props {
+	frontmatter: {
+		title: string
+		meta?: {
+			title?: string
+			description?: string
+		}
+	}
+}
+
 const {
 	frontmatter: { title, meta },
 } = Astro.props

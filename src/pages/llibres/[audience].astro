@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 import { Picture } from 'astro:assets'
 
@@ -8,7 +9,7 @@ import { getPathFor } from '../../helpers/get-path-for'
 
 import styles from '../../styles/book-audience.module.scss'
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
 	async function getBooksForAudience(audienceId: string) {
 		const books = await getCollection('book', (book) => {
 			const bookAudiences = book.data.audience.map(
@@ -34,7 +35,9 @@ export async function getStaticPaths() {
 	})
 
 	return Promise.all(staticPaths)
-}
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { audience, books } = Astro.props
 ---

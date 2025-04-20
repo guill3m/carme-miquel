@@ -1,6 +1,17 @@
 ---
 import BaseLayout from './layout.astro'
 
+interface Props {
+	frontmatter: {
+		color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
+		title: string
+		meta?: {
+			title?: string
+			description?: string
+		}
+	}
+}
+
 const {
 	frontmatter: { color, title, meta },
 } = Astro.props

@@ -1,4 +1,5 @@
 ---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
@@ -7,7 +8,7 @@ import { getPathFor } from '../../helpers/get-path-for'
 
 import styles from '../../styles/article.module.scss'
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
 	async function getArticlesForTag(tagIds: string[]) {
 		const articles = await getCollection('article', (article) => {
 			const articleTags = article.data.tags.map((innerTag) => innerTag.id)
@@ -39,7 +40,9 @@ export async function getStaticPaths() {
 	})
 
 	return Promise.all(staticPaths)
-}
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { tag, articles } = Astro.props
 ---

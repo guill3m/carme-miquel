@@ -11,7 +11,10 @@ import styles from './layout.module.scss'
 interface Props {
 	color?: 'articles' | 'autora' | 'entrevistes' | 'llibres' | 'videos'
 	title: string
-	meta?: { title?: string; description?: string }
+	meta?: {
+		title?: string
+		description?: string
+	}
 	isSingle?: boolean
 }
 

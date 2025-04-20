@@ -5,6 +5,21 @@ import BaseLayout from './layout.astro'
 import LinkList from '../components/link-list.astro'
 import { getPathFor } from '../helpers/get-path-for'
 
+interface Props {
+	frontmatter: {
+		audiencesTitle: string
+		title: string
+		meta?: {
+			title?: string
+			description?: string
+		}
+	}
+}
+
+const {
+	frontmatter: { title, meta, audiencesTitle },
+} = Astro.props
+
 const audiences = await getCollection('book-audience')
 const audiencesList = audiences
 	.sort((a, b) => a.data.order - b.data.order)
@@ -12,10 +27,6 @@ const audiencesList = audiences
 		name: audience.data.name,
 		url: getPathFor('book-audience', audience.id),
 	}))
-
-const {
-	frontmatter: { title, meta, audiencesTitle },
-} = Astro.props
 ---
 
 <BaseLayout color="llibres" title={title} meta={meta}>

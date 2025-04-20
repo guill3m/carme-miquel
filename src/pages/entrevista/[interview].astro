@@ -1,14 +1,15 @@
 ---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import type { Article, WithContext } from 'schema-dts'
 import { Picture } from 'astro:assets'
 import { getCollection, getEntry, render } from 'astro:content'
-import type { Article, WithContext } from 'schema-dts'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
 import styles from '../../styles/interview.module.scss'
 
-export async function getStaticPaths() {
+export const getStaticPaths = (async () => {
 	const interviews = await getCollection('interview')
 
 	const staticPaths = interviews.map(async (interview) => {
@@ -21,7 +22,9 @@ export async function getStaticPaths() {
 	})
 
 	return Promise.all(staticPaths)
-}
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { interview, interviewType } = Astro.props
 const { Content } = await render(interview)

@@ -105,7 +105,7 @@ const video = defineCollection({
 	schema: z.object({
 		meta,
 		title: z.string(),
-		platform: z.string().regex(/vimeo|youtube|youtube-list/),
+		platform: z.enum(['vimeo', 'youtube', 'youtube-list']),
 		videoId: z.string(),
 	}),
 })
