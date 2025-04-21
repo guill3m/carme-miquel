@@ -27,6 +27,7 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { interview, interviewType } = Astro.props
+
 const { Content } = await render(interview)
 
 const languageName = (language: 'ca' | 'es') => {
@@ -50,7 +51,7 @@ const jsonLd: WithContext<Article> = {
 	name: interviewTitle,
 	url: Astro.url.toString(),
 	publisher: interview.data.interviewer,
-	datePublished: interview.data.date.toDateString(),
+	datePublished: interview.data.date.toISOString(),
 	genre: interviewType.data.nameSingular,
 	inLanguage: {
 		'@type': 'Language',

@@ -33,7 +33,7 @@ const jsonLd: WithContext<Article> = {
 	name: article.data.title,
 	url: Astro.url.toString(),
 	publisher: article.data.publisher,
-	datePublished: article.data.date.toDateString(),
+	datePublished: article.data.date.toISOString(),
 	genre: 'Columna d’opinió',
 	author: {
 		'@type': 'Person',
