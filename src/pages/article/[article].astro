@@ -1,7 +1,7 @@
 ---
 import type { Article, WithContext } from 'schema-dts'
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
-import { getCollection, render } from 'astro:content'
+import { getCollection, getEntries, render } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
@@ -20,12 +20,10 @@ export const getStaticPaths = (async () => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
 const { article } = Astro.props
+
 const { Content } = await render(article)
 
-const articleTags = await getCollection('article-tag', (tag) => {
-	const tags = article.data.tags.map((innerTag) => innerTag.id)
-	return tags.includes(tag.id)
-})
+const articleTags = await getEntries(article.data.tags)
 
 const jsonLd: WithContext<Article> = {
 	'@context': 'https://schema.org',
