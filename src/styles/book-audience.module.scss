@@ -14,15 +14,15 @@
 }
 
 .book {
-	height: 12rem;
+	container: book / inline-size;
 
 	a {
+		align-items: flex-start;
 		background: var(--color-background-dark);
 		border-radius: 0.25rem;
-		display: block;
+		display: flex;
 		font-size: 1.1rem;
-		height: 100%;
-		overflow: hidden;
+		height: 10rem;
 		text-decoration: none;
 
 		&:hover,
@@ -31,21 +31,31 @@
 			transform: scale(1.05);
 		}
 	}
+
+	picture {
+		height: 100%;
+	}
 }
 
 .book-cover {
-	float: left;
-	margin-right: 1em;
 	height: 100%;
+	vertical-align: bottom;
 	width: auto;
 }
 
 .book-details {
+	display: block;
 	padding: 1rem;
 
 	span {
 		color: var(--color-foreground-light);
 		font-size: 0.8em;
+	}
+}
+
+@container book (width >= 400px) {
+	.book a {
+		height: 12rem;
 	}
 }
 
