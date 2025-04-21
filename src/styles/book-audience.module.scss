@@ -8,7 +8,7 @@
 	margin: 0;
 	padding: 0;
 
-	&:hover a:not(:hover) {
+	&:has(a:hover) a:not(:hover) {
 		opacity: 0.5;
 	}
 }

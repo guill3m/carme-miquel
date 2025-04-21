@@ -21,7 +21,7 @@
 	list-style: none;
 	padding: 0;
 
-	&:hover a:not(:hover) {
+	&:has(a:hover) a:not(:hover) {
 		--color-highlight: var(--color-foreground-light);
 	}
 
