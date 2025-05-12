@@ -38,3 +38,44 @@ test('video path', () => {
 test('generic path', () => {
 	expect(getPathFor('page', 'entry')).toBe('/entry/')
 })
+
+// Unexpected cases
+
+test('invalid content type', () => {
+	// @ts-ignore
+	expect(getPathFor('invalid-type', 'entry')).toBe('/entry/')
+})
+
+test('empty entry ID', () => {
+	expect(() => getPathFor('article', '')).toThrowError('entryId can’t be null or empty')
+})
+
+test('empty parent entry ID', () => {
+	expect(() => getPathFor('article-tag', 'entry', '')).toThrowError('parentEntryId can’t be null or empty')
+})
+
+test('null entry ID', () => {
+	// @ts-ignore
+	expect(() => getPathFor('article', null)).toThrowError('entryId can’t be null or empty')
+})
+
+test('null parent entry ID', () => {
+	// @ts-ignore
+	expect(() => getPathFor('article-tag', 'entry', null)).toThrowError('parentEntryId can’t be null or empty')
+})
+
+test('undefined parent entry ID', () => {
+	expect(getPathFor('article-tag', 'entry', undefined)).toBe('/articles/entry/')
+})
+
+test('special characters in entry ID', () => {
+	expect(getPathFor('article', 'entry-with/special-chars')).toBe(
+		'/article/entry-with/special-chars/',
+	)
+})
+
+test('special characters in parent entry ID', () => {
+	expect(
+		getPathFor('article-tag', 'entry', 'parent-entry-with/special-chars'),
+	).toBe('/articles/parent-entry-with/special-chars/entry/')
+})
