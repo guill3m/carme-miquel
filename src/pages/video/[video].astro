@@ -1,0 +1,50 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import { getCollection, render } from 'astro:content'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+import VideoEmbed from '../../components/video-embed.astro'
+
+import asideStyles from '../../styles/aside.module.scss'
+
+export const getStaticPaths = (async () => {
+	const videos = await getCollection('video')
+
+	const staticPaths = videos.map(async (video) => {
+		return {
+			params: { video: video.id },
+			props: { video: video },
+		}
+	})
+
+	return Promise.all(staticPaths)
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+
+const { video } = Astro.props
+
+const { Content } = await render(video)
+---
+
+<BaseLayout
+	color="videos"
+	title="Video"
+	meta={{
+		title: `${video.data.title} - Video`,
+		...video.data.meta,
+	}}
+	isSingle
+>
+	<h1 slot="aside-top" class={asideStyles.title}>{video.data.title}</h1>
+	<article>
+		<VideoEmbed
+			aspectRatio={video.data.video.aspectRatio}
+			id={video.data.video.id}
+			platform={video.data.video.platform}
+			title={video.data.title}
+		/>
+		<Content components={{ a: Link }} />
+	</article>
+</BaseLayout>
