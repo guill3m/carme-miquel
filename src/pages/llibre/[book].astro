@@ -1,0 +1,111 @@
+---
+import type { Book, WithContext } from 'schema-dts'
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
+import { getCollection, getEntries, render } from 'astro:content'
+
+import BaseLayout from '../../layouts/layout.astro'
+import Link from '../../components/link.astro'
+
+import itemStyles from '../../styles/item.module.scss'
+import bookStyles from '../../styles/book.module.scss'
+import { Picture } from 'astro:assets'
+
+export const getStaticPaths = (async () => {
+	const books = await getCollection('book')
+	return books.map((book) => ({
+		params: { book: book.id },
+		props: { book },
+	}))
+}) satisfies GetStaticPaths
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+
+const { book } = Astro.props
+
+const { Content } = await render(book)
+
+const bookAudiences = await getEntries(book.data.audience)
+
+const jsonLd: WithContext<Book> = {
+	'@context': 'https://schema.org',
+	'@type': 'Book',
+	name: book.data.title,
+	url: Astro.url.toString(),
+	audience: {
+		'@type': 'Audience',
+		name: bookAudiences.map((audience) => audience.data.name).join(', '),
+	},
+	publisher: {
+		'@type': 'Organization',
+		name: book.data.publisher,
+	},
+	datePublished: book.data.year.toString(),
+	isbn: book.data.isbn,
+	award: book.data.awards && book.data.awards.join(', '),
+	author: {
+		'@type': 'Person',
+		name: 'Carme Miquel i Diego',
+		url: Astro.site?.toString(),
+	},
+	inLanguage: {
+		'@type': 'Language',
+		name: 'Catalan',
+		alternateName: 'ca',
+	},
+}
+---
+
+<BaseLayout
+	color="llibres"
+	title="Llibre"
+	meta={{
+		title: `${book.data.title} - Llibre`,
+		...book.data.meta,
+	}}
+	isSingle
+>
+	<article>
+		<script
+			is:inline
+			set:html={JSON.stringify(jsonLd)}
+			type="application/ld+json"
+		/>
+		<header>
+			<h1 class={itemStyles.title}>{book.data.title}</h1>
+			<div class={itemStyles.meta}>
+				<span>{book.data.publisher}</span> ({book.data.year})
+			</div>
+			{
+				book.data.isbn && (
+					<div class={itemStyles.meta}>
+						<span>ISBN:</span> {book.data.isbn}
+					</div>
+				)
+			}
+			{
+				book.data.awards &&
+					book.data.awards.map((award) => (
+						<div class={bookStyles.award}>{award}</div>
+					))
+			}
+			{
+				book.data.details &&
+					book.data.details.map((detail) => (
+						<div class={bookStyles.details}>
+							{detail.what} <span>{detail.who}</span>
+						</div>
+					))
+			}
+		</header>
+		<Content components={{ a: Link }} />
+	</article>
+	<Fragment slot="aside">
+		<Picture
+			alt=""
+			densities={[1.5, 2, 3]}
+			formats={['avif', 'webp']}
+			src={book.data.cover}
+			width={400}
+		/>
+	</Fragment>
+</BaseLayout>
