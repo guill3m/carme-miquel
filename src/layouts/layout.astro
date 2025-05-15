@@ -2,6 +2,12 @@
 import '../styles/font-face.scss'
 import '../styles/globals.scss'
 
+import {
+	UMAMI_ANALYTICS_HOST,
+	UMAMI_ANALYTICS_ID,
+	UMAMI_ANALYTICS_SCRIPT,
+} from 'astro:env/client'
+
 import SiteHeader from '../components/site-header.astro'
 import SiteFooter from '../components/site-footer.astro'
 import IconSprite from '../components/icon-sprite.astro'
@@ -44,13 +50,18 @@ const TitleTag = isSingle ? 'div' : 'h1'
 		<link rel="author" href={`${Astro.site}humans.txt`} />
 	</head>
 	<body class={color}>
-		<script
-			is:inline
-			defer
-			data-domains="www.carmemiquel.com"
-			data-host-url={import.meta.env.UMAMI_ANALYTICS_HOST}
-			data-website-id={import.meta.env.UMAMI_ANALYTICS_ID}
-			src={import.meta.env.UMAMI_ANALYTICS_SCRIPT}></script>
+		{
+			UMAMI_ANALYTICS_HOST && UMAMI_ANALYTICS_ID && UMAMI_ANALYTICS_SCRIPT && (
+				<script
+					is:inline
+					defer
+					data-domains="www.carmemiquel.com"
+					data-host-url={UMAMI_ANALYTICS_HOST}
+					data-website-id={UMAMI_ANALYTICS_ID}
+					src={UMAMI_ANALYTICS_SCRIPT}
+				/>
+			)
+		}
 		<SiteHeader />
 		<main class={styles.main}>
 			<div class={styles['title-aside']}>
