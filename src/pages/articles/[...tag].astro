@@ -6,7 +6,8 @@ import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 import { getPathFor } from '../../helpers/get-path-for'
 
-import styles from '../../styles/article.module.scss'
+import itemStyles from '../../styles/item.module.scss'
+import articleTagStyles from '../../styles/article-tag.module.scss'
 
 export const getStaticPaths = (async () => {
 	async function getArticlesForTag(tagIds: string[]) {
@@ -53,16 +54,16 @@ const { tag, articles } = Astro.props
 	meta={{ title: `Articles sobre ${tag.data.name}` }}
 >
 	<h2 slot="aside-top">{tag.data.name}</h2>
-	<ul class={styles['article-list']}>
+	<ul class={articleTagStyles['article-list']}>
 		{
 			articles.map((article) => (
 				<li>
-					<h3 class={styles['article-title']}>
+					<h3 class={itemStyles.title}>
 						<Link href={getPathFor('article', article.id)}>
 							{article.data.title}
 						</Link>
 					</h3>
-					<div class={styles['article-meta']}>
+					<div class={itemStyles.meta}>
 						<span>{article.data.publisher}</span>.{' '}
 						{article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })}.
 					</div>
