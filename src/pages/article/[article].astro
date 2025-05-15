@@ -7,7 +7,8 @@ import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 import { getPathFor } from '../../helpers/get-path-for'
 
-import styles from '../../styles/item.module.scss'
+import itemStyles from '../../styles/item.module.scss'
+import asideStyles from '../../styles/aside.module.scss'
 
 export const getStaticPaths = (async () => {
 	const articles = await getCollection('article')
@@ -62,7 +63,7 @@ const jsonLd: WithContext<Article> = {
 	<Fragment slot="aside-top">
 		{
 			articleTags.map((tag) => (
-				<h2>
+				<h2 class={asideStyles.title}>
 					<Link href={getPathFor('article-tag', tag.id, tag.data.parent?.id)}>
 						{tag.data.name}
 					</Link>
@@ -77,8 +78,8 @@ const jsonLd: WithContext<Article> = {
 			type="application/ld+json"
 		/>
 		<header>
-			<h1 class={styles.title}>{article.data.title}</h1>
-			<div class={styles.meta}>
+			<h1 class={itemStyles.title}>{article.data.title}</h1>
+			<div class={itemStyles.meta}>
 				<span>{article.data.publisher}</span>. {
 					article.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
 				}.

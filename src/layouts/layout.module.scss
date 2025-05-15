@@ -70,14 +70,6 @@
 
 	.title-aside {
 		grid-column: span 1;
-
-		h2 {
-			font-family: var(--font-stack-sans);
-			font-size: 2rem;
-			font-weight: 600;
-			line-height: 1.3;
-			margin-top: 0.5em;
-		}
 	}
 
 	.title {
@@ -94,33 +86,13 @@
 	}
 }
 
-@media (width >= 600px) {
-	.title-aside h2 {
-		font-size: 1.25rem;
-	}
-}
-
-@media (width >= 670px) {
-	.title-aside h2 {
-		font-size: 1.5rem;
-	}
-}
-
 @media (width >= 760px) {
-	.title-aside h2 {
-		font-size: 1.75rem;
-	}
-
 	.title {
 		font-size: 2.25rem;
 	}
 }
 
 @media (width >= 850px) {
-	.title-aside h2 {
-		font-size: 2rem;
-	}
-
 	.title {
 		font-size: 2.5rem;
 	}

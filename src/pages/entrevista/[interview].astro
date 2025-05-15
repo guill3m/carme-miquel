@@ -7,7 +7,8 @@ import { getCollection, getEntry, render } from 'astro:content'
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
-import styles from '../../styles/interview.module.scss'
+import interviewStyles from '../../styles/interview.module.scss'
+import asideStyles from '../../styles/aside.module.scss'
 
 export const getStaticPaths = (async () => {
 	const interviews = await getCollection('interview')
@@ -71,10 +72,10 @@ const jsonLd: WithContext<Article> = {
 	isSingle
 >
 	<Fragment slot="aside-top">
-		<InterviewerTag class={styles['interview-title']}
+		<InterviewerTag class={asideStyles.title}
 			>{interview.data.interviewer}</InterviewerTag
 		>
-		<div class={styles['interview-date']}>
+		<div class={asideStyles.subtitle}>
 			{
 				interview.data.dateFormated ??
 					interview.data.date.toLocaleDateString('ca', { dateStyle: 'long' })
@@ -89,7 +90,7 @@ const jsonLd: WithContext<Article> = {
 			}
 		</div>
 	</Fragment>
-	<article class={styles.interview}>
+	<article class={interviewStyles.interview}>
 		<script
 			is:inline
 			set:html={JSON.stringify(jsonLd)}
