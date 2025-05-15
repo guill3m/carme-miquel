@@ -28,11 +28,11 @@ const getIframeUrl = function (
 
 	switch (platform) {
 		case 'vimeo':
-			return `http://player.vimeo.com/video/${id}?portrait=0&color=4bb9c3`
+			return `https://player.vimeo.com/video/${id}`
 		case 'youtube':
-			return `http://www.youtube.com/embed/${id}`
+			return `https://www.youtube-nocookie.com/embed/${id}`
 		case 'youtube-list':
-			return `http://www.youtube.com/embed/videoseries?list=${id}`
+			return `https://www.youtube-nocookie.com/embed/videoseries?list=${id}`
 		default:
 			throw new Error('invalid platform value')
 	}
@@ -46,7 +46,7 @@ const getIframeUrl = function (
 	]}
 >
 	<iframe
-		allow="fullscreen"
+		allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
 		src={getIframeUrl(platform, id)}
 		title={`Video: ${title}`}
 	>
