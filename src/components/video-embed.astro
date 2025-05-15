@@ -1,0 +1,54 @@
+---
+import styles from './video-embed.module.scss'
+
+interface Props {
+	aspectRatio: '16:9' | '4:3'
+	id: string
+	platform: 'vimeo' | 'youtube' | 'youtube-list'
+	title: string
+}
+
+const { aspectRatio, id, platform, title } = Astro.props
+
+const getIframeUrl = function (
+	platform: Props['platform'],
+	id: Props['id'],
+): string {
+	if (id === undefined) {
+		throw new Error('id is required')
+	}
+
+	if (id === null || id === '') {
+		throw new Error('id can’t be null or empty')
+	}
+
+	if (platform === undefined) {
+		throw new Error('platform is required')
+	}
+
+	switch (platform) {
+		case 'vimeo':
+			return `http://player.vimeo.com/video/${id}?portrait=0&color=4bb9c3`
+		case 'youtube':
+			return `http://www.youtube.com/embed/${id}`
+		case 'youtube-list':
+			return `http://www.youtube.com/embed/videoseries?list=${id}`
+		default:
+			throw new Error('invalid platform value')
+	}
+}
+---
+
+<div
+	class:list={[
+		styles.video,
+		styles[`aspect-ratio-${aspectRatio.replace(':', '-')}`],
+	]}
+>
+	<iframe
+		allow="fullscreen"
+		src={getIframeUrl(platform, id)}
+		title={`Video: ${title}`}
+	>
+	</iframe>
+</div>
