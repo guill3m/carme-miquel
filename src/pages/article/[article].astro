@@ -30,9 +30,13 @@ const jsonLd: WithContext<Article> = {
 	'@type': 'Article',
 	name: article.data.title,
 	url: Astro.url.toString(),
-	publisher: article.data.publisher,
+	publisher: {
+		'@type': 'Organization',
+		name: article.data.publisher,
+	},
 	datePublished: article.data.date.toISOString(),
 	genre: 'Columna d’opinió',
+	keywords: articleTags.map((articleTag) => articleTag.data.name).join(', '),
 	author: {
 		'@type': 'Person',
 		name: 'Carme Miquel i Diego',
