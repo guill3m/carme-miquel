@@ -20,7 +20,7 @@ const article = defineCollection({
 })
 
 const articleTag = defineCollection({
-	loader: file('src/content/article-tags/article-tags.yaml'),
+	loader: file('src/content/article-tags.yaml'),
 	schema: z.object({
 		name: z.string(),
 		parent: z.optional(reference('article-tag')),
@@ -58,7 +58,7 @@ const book = defineCollection({
 })
 
 const bookAudience = defineCollection({
-	loader: file('src/content/book-audiences/book-audiences.yaml'),
+	loader: file('src/content/book-audiences.yaml'),
 	schema: z.object({
 		name: z.string(),
 		order: z.number(),
@@ -93,7 +93,7 @@ const interview = defineCollection({
 })
 
 const interviewType = defineCollection({
-	loader: file('src/content/interview-types/interview-types.yaml'),
+	loader: file('src/content/interview-types.yaml'),
 	schema: z.object({
 		namePlural: z.string(),
 		nameSingular: z.string(),
