@@ -102,12 +102,18 @@ const interviewType = defineCollection({
 
 const video = defineCollection({
 	loader: glob({ base: 'src/content/videos', pattern: '*.mdx' }),
-	schema: z.object({
-		meta,
-		title: z.string(),
-		platform: z.enum(['vimeo', 'youtube', 'youtube-list']),
-		videoId: z.string(),
-	}),
+	schema: ({ image }) =>
+		z.object({
+			meta,
+			title: z.string(),
+			date: z.date(),
+			thumbnail: image(),
+			video: z.object({
+				aspectRatio: z.enum(['16:9', '4:3']).optional().default('16:9'),
+				id: z.string(),
+				platform: z.enum(['vimeo', 'youtube', 'youtube-list']),
+			}),
+		}),
 })
 
 export const collections = {

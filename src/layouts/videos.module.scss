@@ -1,0 +1,52 @@
+.video-list {
+	display: grid;
+	gap: 2rem;
+	grid-auto-flow: dense;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&:has(a:hover) a:not(:hover) {
+		opacity: 0.5;
+	}
+}
+
+.video {
+	a {
+		background: var(--color-background-dark);
+		border-radius: 0.25rem;
+		display: flex;
+		flex-direction: column;
+		font-size: 1.1rem;
+		overflow: hidden;
+		text-decoration: none;
+
+		&:hover,
+		&:focus {
+			background: var(--color-background-dark-h);
+			transform: scale(1.05);
+		}
+	}
+
+	img {
+		height: auto;
+		vertical-align: bottom;
+		width: 100%;
+	}
+}
+
+.video-title {
+	font-weight: 700;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 1em;
+	white-space: nowrap;
+}
+
+@media (width >= 940px) {
+	.video-list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
