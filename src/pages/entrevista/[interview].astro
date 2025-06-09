@@ -7,8 +7,8 @@ import { getCollection, getEntry, render } from 'astro:content'
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
-import interviewStyles from '../../styles/interview.module.scss'
 import asideStyles from '../../styles/aside.module.scss'
+import interviewStyles from '../../styles/pages/interview.module.scss'
 
 export const getStaticPaths = (async () => {
 	const interviews = await getCollection('interview')
