@@ -61,13 +61,15 @@ test('undefined parent entry ID', () => {
 })
 
 test('special characters in entry ID', () => {
-	expect(getPathFor('article', 'entry-with/special-chars')).toBe(
-		'/article/entry-with/special-chars/',
+	expect(() => getPathFor('article', 'entry_with/special*chars')).toThrowError(
+		'entryId can only contain lowercase letters, numbers, and hyphens',
 	)
 })
 
 test('special characters in parent entry ID', () => {
-	expect(
-		getPathFor('article-tag', 'entry', 'parent-entry-with/special-chars'),
-	).toBe('/articles/parent-entry-with/special-chars/entry/')
+	expect(() =>
+		getPathFor('article', 'entry', 'parent_with/special*chars'),
+	).toThrowError(
+		'parentEntryId can only contain lowercase letters, numbers, and hyphens',
+	)
 })
