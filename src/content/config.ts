@@ -42,9 +42,7 @@ const book = defineCollection({
 			cover: image(),
 			isbn: z
 				.string()
-				.regex(
-					/^(?=[0-9]{13}$|(?=(?:[0-9]+[-\ ]){4})[-\ 0-9]{17}$)97[89][-\ ]?[0-9]{1,5}[-\ ]?[0-9]+[-\ ]?[0-9]+[-\ ]?[0-9]$$/,
-				)
+				.regex(/^(?:\d[\ |-]?){9}[\d|X]$|^(?:\d[\ |-]?){13}$/)
 				.optional(),
 			awards: z.string().array().optional(),
 			details: z
