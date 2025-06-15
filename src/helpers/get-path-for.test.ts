@@ -47,21 +47,13 @@ test('invalid content type', () => {
 })
 
 test('empty entry ID', () => {
-	expect(() => getPathFor('article', '')).toThrowError('entryId can’t be null or empty')
+	expect(() => getPathFor('article', '')).toThrowError('entryId can’t be empty')
 })
 
 test('empty parent entry ID', () => {
-	expect(() => getPathFor('article-tag', 'entry', '')).toThrowError('parentEntryId can’t be null or empty')
-})
-
-test('null entry ID', () => {
-	// @ts-ignore
-	expect(() => getPathFor('article', null)).toThrowError('entryId can’t be null or empty')
-})
-
-test('null parent entry ID', () => {
-	// @ts-ignore
-	expect(() => getPathFor('article-tag', 'entry', null)).toThrowError('parentEntryId can’t be null or empty')
+	expect(() => getPathFor('article-tag', 'entry', '')).toThrowError(
+		'parentEntryId can’t be empty',
+	)
 })
 
 test('undefined parent entry ID', () => {
