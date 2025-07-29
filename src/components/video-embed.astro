@@ -10,7 +10,7 @@ interface Props {
 
 const { aspectRatio, id, platform, title } = Astro.props
 
-const getIframeUrl = function (
+export const getIframeUrl = function (
 	platform: Props['platform'],
 	id: Props['id'],
 ): string {
