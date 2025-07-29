@@ -15,5 +15,24 @@ export default getViteConfig({
 			provider: 'v8',
 			reporter: ['text', 'text-summary'],
 		},
+		projects: [
+			{
+				extends: true,
+				test: {
+					environment: 'happy-dom',
+					include: ['tests/**/*.browser.test.{ts,js}'],
+					name: 'browser',
+					setupFiles: ['./tests/setup.browser.ts'],
+				},
+			},
+			{
+				extends: true,
+				test: {
+					environment: 'node',
+					include: ['tests/**/*.node.test.{ts,js}'],
+					name: 'node',
+				},
+			},
+		],
 	},
 })
