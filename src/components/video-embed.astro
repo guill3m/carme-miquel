@@ -39,12 +39,7 @@ export const getIframeUrl = function (
 }
 ---
 
-<div
-	class:list={[
-		styles.video,
-		styles[`ar-${aspectRatio.replace(':', '-')}`],
-	]}
->
+<div class:list={[styles.video, styles[`ar-${aspectRatio.replace(':', '-')}`]]}>
 	<iframe
 		allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
 		src={getIframeUrl(platform, id)}

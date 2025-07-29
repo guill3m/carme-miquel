@@ -1,6 +1,7 @@
 .video {
-	aspect-ratio: 16 / 9;
-	position: relative;
+	&.ar-16-9 {
+		aspect-ratio: 16 / 9;
+	}
 
 	&.ar-4-3 {
 		aspect-ratio: 4 / 3;
@@ -9,9 +10,6 @@
 	iframe {
 		border: none;
 		height: 100%;
-		left: 0;
-		position: absolute;
-		top: 0;
 		width: 100%;
 	}
 }
