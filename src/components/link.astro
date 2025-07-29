@@ -1,37 +1,39 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import * as cheerio from 'cheerio'
 
-interface Props {
+interface Props extends HTMLAttributes<'a'> {
 	ariaLabel?: string
-	children: any
-	href: string | null
-	target?: string
-	[prop: string]: any
 }
 
-const { ariaLabel, href, target, ...rest } = Astro.props
+const { ariaLabel, href, rel, target, ...rest } = Astro.props
 
 const isExternalLink = typeof href === 'string' && href.startsWith('https://')
 
 const linkTarget = target ?? (isExternalLink ? '_blank' : undefined)
 
 const linkContent = cheerio.load(await Astro.slots.render('default'))
-const linkText = linkContent('body').text()
+const linkText = linkContent('body').text().trim()
 
-let ariaLabelOpensInNewTab = undefined
+let ariaLabelOpensInNewTab: string | undefined = undefined
 if (linkTarget === '_blank') {
-	ariaLabelOpensInNewTab = `${linkText} (s’obre en una pestanya nova)`
+	ariaLabelOpensInNewTab = `${linkText} (s’obre en una pestanya nova)`.trim()
 }
 
 const linkAriaLabel = ariaLabel ?? ariaLabelOpensInNewTab
+
+let linkRel = rel
+if (isExternalLink) {
+	linkRel = rel ? `${rel} noopener` : 'noopener'
+}
 ---
 
 {
 	href ? (
 		<a
-			aria-label={linkAriaLabel?.trim()}
+			aria-label={linkAriaLabel}
 			href={href}
-			rel={isExternalLink ? 'noopener' : undefined}
+			rel={linkRel}
 			target={linkTarget}
 			{...rest}
 		>
