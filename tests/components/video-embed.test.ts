@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { getIframeUrl } from './video-embed.astro'
+import { getIframeUrl } from '../../src/components/video-embed.astro'
 
 describe('getIframeUrl', () => {
 	test('Vimeo URL', () => {

@@ -41,17 +41,27 @@ const aiBots = [
 	'YouBot',
 ]
 
-const getRobotsTxt = (sitemapURL: URL) => `
+export const getRobotsTxt = (
+	sitemapURL: URL,
+	disallowedBots: string[],
+): string => `
 User-Agent: *
 Disallow:
 
-${aiBots.map((aiBot) => `User-Agent: ${aiBot}`).join('\n')}
-Disallow: /
+${
+	disallowedBots.length > 0
+		? `${disallowedBots
+				.map((disallowedBot) => `User-Agent: ${disallowedBot}`)
+				.join('\n')}
+Disallow: /`
+		: ''
+}
 
 Sitemap: ${sitemapURL.href}
 `
 
+/* v8 ignore next 4 */
 export const GET: APIRoute = ({ site }) => {
 	const sitemapURL = new URL('/sitemap-index.xml', site)
-	return new Response(getRobotsTxt(sitemapURL))
+	return new Response(getRobotsTxt(sitemapURL, aiBots))
 }

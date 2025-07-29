@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { getPathFor } from './get-path-for'
+import { getPathFor } from '../../src/helpers/get-path-for'
 
 describe('getPathFor', () => {
 	test('article path', () => {
