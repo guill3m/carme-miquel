@@ -13,8 +13,8 @@ describe('VideoEmbed component', () => {
 				title: 'Test title',
 			},
 		})
-		const videoEmbedElement = result.firstChild
-		const iframeElement = videoEmbedElement.getElementsByTagName('iframe')[0]
+		const videoEmbedElement = result.firstElementChild
+		const iframeElement = videoEmbedElement?.querySelector('iframe')
 
 		expect(result).toMatchSnapshot()
 
@@ -35,8 +35,9 @@ describe('VideoEmbed component', () => {
 				title: 'Test title',
 			},
 		})
-		const videoEmbedElement = result.firstChild
-		const iframeElement = videoEmbedElement.getElementsByTagName('iframe')[0]
+
+		const videoEmbedElement = result.firstElementChild
+		const iframeElement = videoEmbedElement?.querySelector('iframe')
 
 		expect(result).toMatchSnapshot()
 
@@ -57,8 +58,9 @@ describe('VideoEmbed component', () => {
 				title: 'Test title',
 			},
 		})
-		const videoEmbedElement = result.firstChild
-		const iframeElement = videoEmbedElement.getElementsByTagName('iframe')[0]
+
+		const videoEmbedElement = result.firstElementChild
+		const iframeElement = videoEmbedElement?.querySelector('iframe')
 
 		expect(result).toMatchSnapshot()
 

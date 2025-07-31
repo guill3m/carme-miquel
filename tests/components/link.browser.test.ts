@@ -14,7 +14,7 @@ describe('Link component', () => {
 					href: '/test/',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -35,7 +35,7 @@ describe('Link component', () => {
 					target: '_blank',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -58,7 +58,7 @@ describe('Link component', () => {
 					rel: 'nofollow',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -81,7 +81,7 @@ describe('Link component', () => {
 					href: '/test/',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -104,7 +104,7 @@ describe('Link component', () => {
 					href: '/test/',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -127,7 +127,7 @@ describe('Link component', () => {
 					href: 'https://www.test.com',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -150,7 +150,7 @@ describe('Link component', () => {
 					rel: 'nofollow',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -175,7 +175,7 @@ describe('Link component', () => {
 					href: 'https://www.test.com',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -201,7 +201,7 @@ describe('Link component', () => {
 					href: 'https://www.test.com',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -221,7 +221,7 @@ describe('Link component', () => {
 					href: 'https://www.test.com',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -244,7 +244,7 @@ describe('Link component', () => {
 				},
 				props: {},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -263,7 +263,7 @@ describe('Link component', () => {
 					id: 'the-link',
 				},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
@@ -281,7 +281,7 @@ describe('Link component', () => {
 				},
 				props: {},
 			})
-			const linkElement = result.firstChild
+			const linkElement = result.firstElementChild
 
 			expect(result).toMatchSnapshot()
 
