@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro'
+import type { APIContext, APIRoute } from 'astro'
 
 // AI bots, see: https://github.com/ai-robots-txt/ai.robots.txt
 const aiBots = [
@@ -60,8 +60,9 @@ Disallow: /`
 Sitemap: ${sitemapURL.href}
 `
 
-/* v8 ignore next 4 */
-export const GET: APIRoute = ({ site }) => {
+/* v8 ignore start */
+export const GET: APIRoute = ({ site }: APIContext) => {
 	const sitemapURL = new URL('/sitemap-index.xml', site)
 	return new Response(getRobotsTxt(sitemapURL, aiBots))
 }
+/* v8 ignore end */
