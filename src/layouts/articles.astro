@@ -21,9 +21,7 @@ const {
 
 const categories = await getCollection('article-tag')
 
-function getChildCategoriesList(
-	parentId: string,
-): { name: string; url: string }[] {
+function getChildCategoriesList(parentId: string) {
 	return categories
 		.filter((childCategory) => childCategory.data.parent?.id === parentId)
 		.map((child) => ({

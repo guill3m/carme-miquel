@@ -10,7 +10,7 @@ export function getPathFor(
 		| 'page',
 	entryId: string,
 	parentEntryId?: string,
-): string {
+): `/${string}/` {
 	const entryIdPattern = /^[a-z0-9-]+$/
 
 	if (entryId === '') {
