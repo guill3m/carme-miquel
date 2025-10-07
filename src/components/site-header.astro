@@ -101,7 +101,7 @@ import headerImage from '../assets/carme-miquel.png'
 				text-decoration: none;
 			}
 
-			svg {
+			:global(svg) {
 				fill: var(--color-background);
 				margin-right: 0.5em;
 				height: 2.5em;
@@ -137,7 +137,7 @@ import headerImage from '../assets/carme-miquel.png'
 					}
 				}
 
-				svg {
+				:global(svg) {
 					background-color: var(--color-highlight);
 					border-radius: 50%;
 					height: 4em;
@@ -149,7 +149,7 @@ import headerImage from '../assets/carme-miquel.png'
 
 				a:hover,
 				a:focus {
-					svg {
+					:global(svg) {
 						transition-timing-function: var(--cubic-bezier-ease-in);
 					}
 				}
