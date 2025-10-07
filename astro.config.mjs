@@ -24,8 +24,25 @@ export default defineConfig({
 			}),
 		},
 	},
-	experimental: { contentIntellisense: true },
-	integrations: [mdx(), sitemap({ lastmod: new Date() })],
+	experimental: {
+		contentIntellisense: true,
+		preserveScriptOrder: true,
+	},
+	integrations: [
+		mdx(),
+		sitemap({
+			lastmod: new Date(),
+			namespaces: {
+				image: false,
+				news: false,
+				video: false,
+				xhtml: false,
+			},
+		}),
+	],
+	prefetch: {
+		prefetchAll: true,
+	},
 	site: 'https://www.carmemiquel.com',
 	trailingSlash: 'always',
 })
