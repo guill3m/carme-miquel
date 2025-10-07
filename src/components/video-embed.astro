@@ -1,6 +1,4 @@
 ---
-import styles from '../styles/components/video-embed.module.scss'
-
 interface Props {
 	aspectRatio: '16:9' | '4:3'
 	id: string
@@ -39,7 +37,7 @@ export const getIframeUrl = function (
 }
 ---
 
-<div class:list={[styles.video, styles[`ar-${aspectRatio.replace(':', '-')}`]]}>
+<div class:list={['video', `ar-${aspectRatio.replace(':', '-')}`]}>
 	<iframe
 		allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
 		src={getIframeUrl(platform, id)}
@@ -47,3 +45,23 @@ export const getIframeUrl = function (
 	>
 	</iframe>
 </div>
+
+<style lang="scss">
+	@layer component {
+		.video {
+			&.ar-16-9 {
+				aspect-ratio: 16 / 9;
+			}
+
+			&.ar-4-3 {
+				aspect-ratio: 4 / 3;
+			}
+
+			iframe {
+				border: none;
+				height: 100%;
+				width: 100%;
+			}
+		}
+	}
+</style>

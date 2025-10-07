@@ -1,6 +1,4 @@
 ---
-import styles from '../styles/components/link-list.module.scss'
-
 interface Props {
 	items: {
 		name: string
@@ -15,7 +13,7 @@ interface Props {
 const { items } = Astro.props
 ---
 
-<ul class={styles['link-list']}>
+<ul class="link-list">
 	{
 		items.map((item) => (
 			<li>
@@ -33,3 +31,31 @@ const { items } = Astro.props
 		))
 	}
 </ul>
+
+<style lang="scss">
+	@layer component {
+		.link-list {
+			font-size: 1.1em;
+			line-height: 1.8;
+			list-style: none;
+			padding-left: 0;
+
+			ul {
+				list-style: none;
+				padding-left: 1em;
+				font-size: 0.9em;
+			}
+
+			@media (width >= 760px) {
+				:global(.articles) & {
+					column-count: 2;
+					column-gap: 2em;
+
+					li {
+						break-inside: avoid-column;
+					}
+				}
+			}
+		}
+	}
+</style>

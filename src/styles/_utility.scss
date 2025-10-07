@@ -1,0 +1,24 @@
+@layer utility {
+	.color {
+		color: var(--color-highlight);
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	// Google Chrome translation
+	.translated-rtl {
+		direction: rtl;
+	}
+
+	.visually-hidden:not(:focus):not(:active) {
+		clip: rect(0 0 0 0);
+		clip-path: inset(50%);
+		height: 1px;
+		overflow: hidden;
+		position: absolute;
+		white-space: nowrap;
+		width: 1px;
+	}
+}

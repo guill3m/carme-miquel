@@ -8,7 +8,6 @@ import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
 import asideStyles from '../../styles/aside.module.scss'
-import interviewStyles from '../../styles/pages/interview.module.scss'
 
 export const getStaticPaths = (async () => {
 	const interviews = await getCollection('interview')
@@ -90,7 +89,7 @@ const jsonLd: WithContext<Article> = {
 			}
 		</div>
 	</Fragment>
-	<article class={interviewStyles.interview}>
+	<article class="interview">
 		<script
 			is:inline
 			set:html={JSON.stringify(jsonLd)}
@@ -118,3 +117,15 @@ const jsonLd: WithContext<Article> = {
 		}
 	</Fragment>
 </BaseLayout>
+
+<style lang="scss">
+	@layer layout {
+		.interview {
+			:global(.interviewer) {
+				border-left: 0.25rem solid var(--color-highlight);
+				font-family: var(--font-stack-serif);
+				padding-left: 0.5rem;
+			}
+		}
+	}
+</style>

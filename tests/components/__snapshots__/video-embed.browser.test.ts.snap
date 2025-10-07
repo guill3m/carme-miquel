@@ -3,15 +3,17 @@
 exports[`VideoEmbed component > vimeo 1`] = `
 <DocumentFragment>
   <div
-    class="_video_9b329f _ar-16-9_9b329f"
+    class="video ar-16-9"
+    data-astro-cid-zht7hyb4=""
     data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-    data-astro-source-loc="42:81"
+    data-astro-source-loc="40:68"
   >
      
     <iframe
       allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
+      data-astro-cid-zht7hyb4=""
       data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-      data-astro-source-loc="47:3"
+      data-astro-source-loc="45:3"
       src="https://player.vimeo.com/video/test-id"
       title="Video: Test title"
     >
@@ -20,21 +22,24 @@ exports[`VideoEmbed component > vimeo 1`] = `
     </iframe>
      
   </div>
+   
 </DocumentFragment>
 `;
 
 exports[`VideoEmbed component > youtube 1`] = `
 <DocumentFragment>
   <div
-    class="_video_9b329f _ar-4-3_9b329f"
+    class="video ar-4-3"
+    data-astro-cid-zht7hyb4=""
     data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-    data-astro-source-loc="42:81"
+    data-astro-source-loc="40:68"
   >
      
     <iframe
       allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
+      data-astro-cid-zht7hyb4=""
       data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-      data-astro-source-loc="47:3"
+      data-astro-source-loc="45:3"
       src="https://www.youtube-nocookie.com/embed/test-id"
       title="Video: Test title"
     >
@@ -43,21 +48,24 @@ exports[`VideoEmbed component > youtube 1`] = `
     </iframe>
      
   </div>
+   
 </DocumentFragment>
 `;
 
 exports[`VideoEmbed component > youtube list 1`] = `
 <DocumentFragment>
   <div
-    class="_video_9b329f _ar-16-9_9b329f"
+    class="video ar-16-9"
+    data-astro-cid-zht7hyb4=""
     data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-    data-astro-source-loc="42:81"
+    data-astro-source-loc="40:68"
   >
      
     <iframe
       allow="encrypted-media; fullscreen; gyroscope; picture-in-picture"
+      data-astro-cid-zht7hyb4=""
       data-astro-source-file="/Users/guill3m/Projects/carme-miquel/src/components/video-embed.astro"
-      data-astro-source-loc="47:3"
+      data-astro-source-loc="45:3"
       src="https://www.youtube-nocookie.com/embed/videoseries?list=test-id"
       title="Video: Test title"
     >
@@ -66,5 +74,6 @@ exports[`VideoEmbed component > youtube list 1`] = `
     </iframe>
      
   </div>
+   
 </DocumentFragment>
 `;

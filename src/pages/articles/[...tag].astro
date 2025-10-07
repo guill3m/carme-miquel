@@ -8,7 +8,6 @@ import { getPathFor } from '../../helpers/get-path-for'
 
 import itemStyles from '../../styles/item.module.scss'
 import asideStyles from '../../styles/aside.module.scss'
-import articleTagStyles from '../../styles/pages/article-tag.module.scss'
 
 export const getStaticPaths = (async () => {
 	async function getArticlesForTag(tagIds: string[]) {
@@ -55,7 +54,7 @@ const { tag, articles } = Astro.props
 	meta={{ title: `Articles sobre ${tag.data.name}` }}
 >
 	<h2 slot="aside-top" class={asideStyles.title}>{tag.data.name}</h2>
-	<ul class={articleTagStyles['article-list']}>
+	<ul class="article-list">
 		{
 			articles.map((article) => (
 				<li>
@@ -73,3 +72,21 @@ const { tag, articles } = Astro.props
 		}
 	</ul>
 </BaseLayout>
+
+<style lang="scss">
+	@layer layout {
+		.article-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+
+			h3 {
+				margin-top: 0;
+			}
+
+			li:not(:first-child) {
+				margin-top: 2.5rem;
+			}
+		}
+	}
+</style>

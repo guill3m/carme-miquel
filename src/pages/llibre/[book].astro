@@ -2,13 +2,12 @@
 import type { Book, WithContext } from 'schema-dts'
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection, getEntries, render } from 'astro:content'
+import { Picture } from 'astro:assets'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
 
 import itemStyles from '../../styles/item.module.scss'
-import bookStyles from '../../styles/pages/book.module.scss'
-import { Picture } from 'astro:assets'
 
 export const getStaticPaths = (async () => {
 	const books = await getCollection('book')
@@ -84,14 +83,12 @@ const jsonLd: WithContext<Book> = {
 			}
 			{
 				book.data.awards &&
-					book.data.awards.map((award) => (
-						<div class={bookStyles.award}>{award}</div>
-					))
+					book.data.awards.map((award) => <div class="award">{award}</div>)
 			}
 			{
 				book.data.details &&
 					book.data.details.map((detail) => (
-						<div class={bookStyles.details}>
+						<div class="details">
 							{detail.what} <span>{detail.who}</span>
 						</div>
 					))
@@ -109,3 +106,26 @@ const jsonLd: WithContext<Book> = {
 		/>
 	</Fragment>
 </BaseLayout>
+
+<style lang="scss">
+	@layer layout {
+		.award,
+		.details {
+			font-family: var(--font-stack-serif);
+			margin: 0.5em 0 0;
+		}
+
+		.award {
+			color: var(--color-foreground-light);
+			font-size: 1.25em;
+		}
+
+		.details {
+			font-size: 0.8em;
+
+			span {
+				font-weight: 600;
+			}
+		}
+	}
+</style>
