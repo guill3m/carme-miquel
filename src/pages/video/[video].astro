@@ -3,8 +3,8 @@ import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 import { getCollection, render } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
-import Link from '../../components/link.astro'
 import VideoEmbed from '../../components/video-embed.astro'
+import { components } from '../../helpers/mdx-components'
 
 import asideStyles from '../../styles/aside.module.scss'
 
@@ -45,6 +45,6 @@ const { Content } = await render(video)
 			platform={video.data.video.platform}
 			title={video.data.title}
 		/>
-		<Content components={{ a: Link }} />
+		<Content components={components} />
 	</article>
 </BaseLayout>

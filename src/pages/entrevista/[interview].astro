@@ -5,7 +5,7 @@ import { Picture } from 'astro:assets'
 import { getCollection, getEntry, render } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
-import Link from '../../components/link.astro'
+import { components } from '../../helpers/mdx-components'
 
 import asideStyles from '../../styles/aside.module.scss'
 
@@ -96,7 +96,7 @@ const jsonLd: WithContext<Article> = {
 			type="application/ld+json"
 		/>
 		{interview.data.title && <h1>{interview.data.title}</h1>}
-		<Content components={{ a: Link }} />
+		<Content components={components} />
 	</article>
 	<Fragment slot="aside">
 		{

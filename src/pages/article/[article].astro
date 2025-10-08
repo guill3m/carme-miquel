@@ -5,6 +5,7 @@ import { getCollection, getEntries, render } from 'astro:content'
 
 import BaseLayout from '../../layouts/layout.astro'
 import Link from '../../components/link.astro'
+import { components } from '../../helpers/mdx-components'
 import { getPathFor } from '../../helpers/get-path-for'
 
 import itemStyles from '../../styles/item.module.scss'
@@ -85,6 +86,6 @@ const jsonLd: WithContext<Article> = {
 				}.
 			</div>
 		</header>
-		<Content components={{ a: Link }} />
+		<Content components={components} />
 	</article>
 </BaseLayout>
