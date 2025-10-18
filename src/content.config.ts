@@ -9,7 +9,7 @@ const meta = z
 	.optional()
 
 const article = defineCollection({
-	loader: glob({ base: 'src/content/articles', pattern: '*.mdx' }),
+	loader: glob({ base: 'content/articles', pattern: '*.mdx' }),
 	schema: z.object({
 		meta,
 		title: z.string(),
@@ -20,7 +20,7 @@ const article = defineCollection({
 })
 
 const articleTag = defineCollection({
-	loader: file('src/content/article-tags.yaml'),
+	loader: file('content/article-tags.yaml'),
 	schema: z.object({
 		name: z.string(),
 		parent: z.optional(reference('article-tag')),
@@ -29,7 +29,7 @@ const articleTag = defineCollection({
 
 const book = defineCollection({
 	loader: glob({
-		base: 'src/content/books',
+		base: 'content/books',
 		pattern: ['*.mdx', '!*.documents.mdx'],
 	}),
 	schema: ({ image }) =>
@@ -40,6 +40,7 @@ const book = defineCollection({
 			year: z.number().min(1900).max(2024),
 			audience: z.array(reference('book-audience')),
 			cover: image(),
+			coverAlt: image().optional(),
 			isbn: z
 				.string()
 				.regex(/^(?:\d[\ |-]?){9}[\d|X]$|^(?:\d[\ |-]?){13}$/)
@@ -56,7 +57,7 @@ const book = defineCollection({
 })
 
 const bookAudience = defineCollection({
-	loader: file('src/content/book-audiences.yaml'),
+	loader: file('content/book-audiences.yaml'),
 	schema: z.object({
 		name: z.string(),
 		order: z.number(),
@@ -64,7 +65,7 @@ const bookAudience = defineCollection({
 })
 
 const bookDocuments = defineCollection({
-	loader: glob({ base: 'src/content/books', pattern: '*.documents.mdx' }),
+	loader: glob({ base: 'content/books', pattern: '*.documents.mdx' }),
 	schema: z.object({
 		book: reference('book'),
 		meta,
@@ -73,7 +74,7 @@ const bookDocuments = defineCollection({
 })
 
 const interview = defineCollection({
-	loader: glob({ base: 'src/content/interviews', pattern: '*.mdx' }),
+	loader: glob({ base: 'content/interviews', pattern: '*.mdx' }),
 	schema: ({ image }) =>
 		z.object({
 			meta,
@@ -91,7 +92,7 @@ const interview = defineCollection({
 })
 
 const interviewType = defineCollection({
-	loader: file('src/content/interview-types.yaml'),
+	loader: file('content/interview-types.yaml'),
 	schema: z.object({
 		namePlural: z.string(),
 		nameSingular: z.string(),
@@ -99,7 +100,7 @@ const interviewType = defineCollection({
 })
 
 const video = defineCollection({
-	loader: glob({ base: 'src/content/videos', pattern: '*.mdx' }),
+	loader: glob({ base: 'content/videos', pattern: '*.mdx' }),
 	schema: ({ image }) =>
 		z.object({
 			meta,
